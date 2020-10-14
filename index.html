@@ -98,7 +98,7 @@ var map = new mapboxgl.Map({
 map.on('load', function() {
   map.addLayer({
     id: 'collisions',
-    type: 'symbol',
+    type: 'circle',
     source: {
       type: 'geojson',
       data: '/covid19Data/events.geojson' // replace this with the url of your own geojson
