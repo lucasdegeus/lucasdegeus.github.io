@@ -227,7 +227,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   		if (nonExist) {
   			continue;
   		}
-      if (i < week - 2) {
+      if (i < week - 2 || i > week + 2) {
         map.removeLayer('week'+i);
         map.removeSource('week'+i);
       }
