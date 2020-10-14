@@ -220,17 +220,15 @@ document.getElementById('slider').addEventListener('input', function(e) {
   currentActive = ('week'+week);
 
   //checken of de week al exists
-  for (var i = 0; i < 42; i++) {
+  for (var i = 0; i < 4; i++) {
       // console.log(i);
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
 
   	if (i !== week) {
   		if (nonExist) {
-        console.log('doe ik 2')
   			continue;
   		}
-      console.log('doe ik')
       if (i < week - 2) {
         map.removeLayer('week'+i);
         map.removeSource('week'+i);
@@ -239,7 +237,6 @@ document.getElementById('slider').addEventListener('input', function(e) {
   	}
   	if (i == week) {
   		if (nonExist) {
-  			console.log('week'+i+".geojson", "week"+i);
   			mapCreate('week'+i+".geojson", 'week'+i);
   		}
   		map.setLayoutProperty('week'+i, 'visibility', 'visible');
