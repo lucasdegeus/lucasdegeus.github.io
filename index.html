@@ -167,7 +167,7 @@ function mapCreate(filename, id) {
 map.addLayer({
       'id': id,
       'type': 'circle',
-      'source': 'europe1',
+      'source': id,
       'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
