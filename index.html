@@ -218,15 +218,24 @@ document.getElementById('slider').addEventListener('input', function(e) {
   currentActive = ('week'+week);
 
   //checken of de week al exists
-  var mapLayer = map.getLayer(currentActive);
+  for (var i = 0; i < 42; i++) {
+  	mapLayer = map.getLayer('week'+i)
+  	nonExist = (typeof mapLeyer == 'undefined')
+  	if (i !== week) {
+  		if (nonExist) {
+  			continue;
+  		}
+  		map.setLayoutProperty('week'+i, 'visibility', 'none');
+  	}
+  	if (i == week) {
+  		if (nonExist) {
+  			mapCreate(currentActive+".geojson", currentActive) 	
+  		}
+  		map.setLayoutProperty('week'+i, 'visibility', 'visible');
+  	}}
 
-  if (typeof variable == 'undefined') {
-  mapCreate(currentActive+".geojson", currentActive) 	
-	}
   // update the map
   map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
-  map.setLayoutProperty('week1', 'visibility', 'visible');
-  map.setLayoutProperty(currentActive, 'visibility', 'none');
 
   // converting 0-23 hour to AMPM format
   // var ampm = hour >= 12 ? 'PM' : 'AM';
