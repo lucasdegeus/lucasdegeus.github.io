@@ -176,7 +176,7 @@ map.addLayer({
       'id': 'week1',
       'type': 'circle',
       'source': 'week1',
-//       'filter': ['==', ['number', ['get', 'week']], 1],
+      // 'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
       },
@@ -227,6 +227,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
 
   // update the map
   map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
+  map.setLayoutProperty('week1', 'visibility', 'visible');
   map.setLayoutProperty(currentActive, 'visibility', 'visible');
 
   // converting 0-23 hour to AMPM format
