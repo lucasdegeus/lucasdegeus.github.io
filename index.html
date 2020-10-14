@@ -227,11 +227,11 @@ document.getElementById('slider').addEventListener('input', function(e) {
   		if (nonExist) {
   			continue;
   		}
-      if (i < week - 2) {
-        map.removeLayer('week'+i);
-        map.removeSource('week'+i);
-      }
-      else { map.setLayoutProperty('week'+i, 'visibility', 'none'); }
+      // if (i < week - 2) {
+      //   map.removeLayer('week'+i);
+      //   map.removeSource('week'+i);
+      // }
+    map.setLayoutProperty('week'+i, 'visibility', 'none'); 
   	}
   	if (i == week) {
   		if (nonExist) {
