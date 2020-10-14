@@ -137,6 +137,7 @@ map.addLayer({
       'id': 'europe1',
       'type': 'circle',
       'source': 'europe1',
+      'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
       },
@@ -153,6 +154,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   var week = parseInt(e.target.value);
   // update the map
   map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
+  map.setFilter('europe1', ['==', ['number', ['get', 'week']], week]);
 
   // converting 0-23 hour to AMPM format
   // var ampm = hour >= 12 ? 'PM' : 'AM';
