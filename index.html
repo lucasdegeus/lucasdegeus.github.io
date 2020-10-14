@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@lucasdegeus 
+lucasdegeus
+/
+lucasdegeus.github.io
+1
+00
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+lucasdegeus.github.io/index.html
+@lucasdegeus
+lucasdegeus Update index.html
+Latest commit 276cea5 2 minutes ago
+ History
+ 1 contributor
+175 lines (155 sloc)  3.77 KB
+ 
 <!DOCTYPE html>
 <head>
 <meta charset='utf-8' />
@@ -137,14 +168,14 @@ map.addSource('eventscovid', {
     // }
     // 'filter': ['==', ['number', ['get', 'week']], 1]
   });
-map.addSource('europe1', {
+map.addSource('week1', {
 'type': 'geojson',
-'data': '/myfile3.geojson'
+'data': '/week1.geojson'
 });
 map.addLayer({
-      'id': 'europe1',
+      'id': 'week1',
       'type': 'circle',
-      'source': 'europe1',
+      'source': 'week1',
       'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
@@ -168,9 +199,9 @@ map.addLayer({
       'id': id,
       'type': 'circle',
       'source': id,
-      'filter': ['==', ['number', ['get', 'week']], 1],
+      // 'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
-         'visibility': 'visible'
+         'visibility': 'none'
       },
       'paint': {
         'circle-radius': 5,
@@ -184,9 +215,19 @@ map.addLayer({
 
 document.getElementById('slider').addEventListener('input', function(e) {
   var week = parseInt(e.target.value);
+  currentActive = ('week'+week);
+
+  //checken of de week al exists
+  var mapLayer = map.getLayer(currentActive);
+
+  if (typeof variable == 'undefined') {
+  mapCreate(currentActive+".geojson", currentActive) 	
+	}
+
+
   // update the map
   map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
-  map.setFilter('europe1', ['==', ['number', ['get', 'week']], week]);
+  map.setLayoutProperty(currentActive, 'visibility', 'visible');
 
   // converting 0-23 hour to AMPM format
   // var ampm = hour >= 12 ? 'PM' : 'AM';
@@ -197,4 +238,3 @@ document.getElementById('slider').addEventListener('input', function(e) {
 });
 </script>
 </body>
-
