@@ -223,12 +223,14 @@ document.getElementById('slider').addEventListener('input', function(e) {
   for (var i = 0; i < 42; i++) {
       // console.log(i);
   	mapLayer = map.getLayer('week'+i)
-  	nonExist = (typeof mapLeyer == 'undefined')
+  	nonExist = (typeof mapLayer == 'undefined')
 
   	if (i !== week) {
   		if (nonExist) {
+        console.log('doe ik 2')
   			continue;
   		}
+      console.log('doe ik')
   		map.setLayoutProperty('week'+i, 'visibility', 'none');
   	}
   	if (i == week) {
