@@ -82,14 +82,20 @@ a {
 </div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
-
+var bounds = [
+[-30, 30], // Southwest coordinates
+[60, 80] // Northeast coordinates
+];
+centerOfMap = [0,0];
+maxZoomOfMap = 10;
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v10',
   center: [-74.0059, 40.7128], // initial map center in [lon, lat]
   zoom: 0,
   minzoom: 2,
-  maxzoom: 8
+maxBounds: bounds,
+maxZoom: maxZoomOfMap
 });
 
 
