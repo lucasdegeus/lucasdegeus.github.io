@@ -91,7 +91,7 @@ maxZoomOfMap = 10;
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v10',
-  center: [-74.0059, 40.7128], // initial map center in [lon, lat]
+  center:centerOfMap, // initial map center in [lon, lat]
   zoom: 0,
   minzoom: 2,
 maxBounds: bounds,
