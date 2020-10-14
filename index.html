@@ -95,14 +95,20 @@ var map = new mapboxgl.Map({
 });
 
 
-map.on('load', function() {
+
+map.on('load', function () {
+// data from opendata.cityofboise.org/
+map.addSource('eventscovid', {
+'type': 'geojson',
+'data': '/events.geojson'
+});
+
   map.addLayer({
-    id: 'collisions',
-    type: 'circle',
-    source: {
-      type: 'geojson',
-      data: '/events.geojson' // replace this with the url of your own geojson
-    },
+    'id': 'eventscovid',
+    'type': 'symbol',
+    'source': 'eventscovid',
+    'layout': {
+    	'text-field' : ['format',['downcase', ['get', 'name']]]}
     // paint: {
     //   'circle-radius': [
     //     'interpolate',
