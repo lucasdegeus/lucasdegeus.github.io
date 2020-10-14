@@ -84,6 +84,11 @@ a {
   </div>
 </div>
 
+<div class='session' id='sliderbar'>
+  <h2>Week: <label id='active-hour'>1</label></h2>
+  <input id='slider' class='row' type='range' min='1' max='5' step='1' value='1' />
+</div>
+
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
 
@@ -130,9 +135,21 @@ map.addSource('eventscovid', {
     //   ],
     //   'circle-opacity': 0.8
     // }
-    'filter': ['==', ['number', ['get', 'week']], 1]
+//     'filter': ['==', ['number', ['get', 'week']], 1]
   });
 });
 
+document.getElementById('slider').addEventListener('input', function(e) {
+  var week = parseInt(e.target.value);
+  // update the map
+  map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], week]);
+
+  // converting 0-23 hour to AMPM format
+  // var ampm = hour >= 12 ? 'PM' : 'AM';
+  // var hour12 = hour % 12 ? hour % 12 : 12;
+
+  // update text in the UI
+  document.getElementById('active-hour').innerText = week;
+});
 </script>
 </body>
