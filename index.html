@@ -232,6 +232,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
       if (i < week - 2) {
         map.removeLayer('week'+i);
         map.removeSource('week'+i);
+        continue;
       }
   		map.setLayoutProperty('week'+i, 'visibility', 'none');
   	}
