@@ -223,12 +223,10 @@ document.getElementById('slider').addEventListener('input', function(e) {
   if (typeof variable == 'undefined') {
   mapCreate(currentActive+".geojson", currentActive) 	
 	}
-
-
   // update the map
   map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
   map.setLayoutProperty('week1', 'visibility', 'visible');
-  map.setLayoutProperty(currentActive, 'visibility', 'visible');
+  map.setLayoutProperty(currentActive, 'visibility', 'none');
 
   // converting 0-23 hour to AMPM format
   // var ampm = hour >= 12 ? 'PM' : 'AM';
