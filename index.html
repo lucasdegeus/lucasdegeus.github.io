@@ -305,12 +305,34 @@ map2019.addLayer({
 });
 
 
-function mapCreate(filename, id, visibility) {
+function mapCreate(filepath, id, visibility) {
 	map.addSource(id, {
 'type': 'geojson',
-'data': filename
+'data': filepath
 });
 map.addLayer({
+      'id': id,
+      'type': 'circle',
+      'source': id,
+      // 'filter': ['==', ['number', ['get', 'week']], 1],
+      'layout': {
+         'visibility': visibility
+      },
+      'paint': {
+        'circle-radius': 5,
+        'circle-color': ['get', 'fill'],
+//         'circle-blur': 1,
+        'circle-opacity': 1
+      }
+   });
+}
+
+function secondMapCreate(filepath, id, visibility) {
+	map2019.addSource(id, {
+'type': 'geojson',
+'data': filepath
+});
+map2019.addLayer({
       'id': id,
       'type': 'circle',
       'source': id,
@@ -345,6 +367,20 @@ function substanceSwitch() {
 	chunkLoader(currentSub,week);
 }
 
+function secondSubstanceSwitch() {
+  var currentSub = document.getElementById("substances").value
+  var week = parseInt(document.getElementById('slider').value);
+  for (var i = 1; i < 8; i++) {
+  	mapLayer = map2019.getLayer('week'+i)
+  	nonExist = (typeof mapLayer == 'undefined')
+  		if (nonExist) {
+  			continue;
+  		}
+      map2019.removeLayer('week'+i);
+      map2019.removeSource('week'+i); }
+	secondChunkLoader(currentSub,week);
+}
+
 
 function chunkLoader(currentSub,currentWeek) {
 	for (var i = currentWeek-2; i<=currentWeek+2;i++) {
@@ -362,6 +398,25 @@ function chunkLoader(currentSub,currentWeek) {
 
 	}
 }
+
+
+function secondChunkLoader(currentSub,currentWeek) {
+	for (var i = currentWeek-2; i<=currentWeek+2;i++) {
+		mapLayer = map2019.getLayer('week'+i)
+  		nonExist = (typeof mapLayer == 'undefined')
+  		if (!nonExist || i < 1 || i >= 8) {
+  			continue;
+  		}
+		if (i == currentWeek) {
+			secondMapCreate(currentSub+'/week'+currentWeek+".geojson", 'week'+currentWeek, 'visible');
+  			map2019.setLayoutProperty('week'+currentWeek, 'visibility', 'visible');
+  			continue;
+		}
+		secondMapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'none');
+
+	}
+}
+
 
 document.getElementById('slider').addEventListener('input', function(e) {
   var week = parseInt(e.target.value);
@@ -381,16 +436,20 @@ document.getElementById('slider').addEventListener('input', function(e) {
       if (i < week - 2 || i > week + 2) {
         map.removeLayer('week'+i);
         map.removeSource('week'+i);
+        map2019.removeLayer('week'+i);
+        map2019.removeSource('week'+i);
       }
       else { map.setLayoutProperty('week'+i, 'visibility', 'none'); }
   	}
   	if (i == week) {
   		chunkLoader(currentSub,i);
+  		secondChunkLoader(currentSub,i);
   		// if (nonExist) {
     // 	  console.log("event ding")
   		// 	chunkLoader(currentSub,i);
   		// }
   		map.setLayoutProperty('week'+i, 'visibility', 'visible');
+  		map2019.setLayoutProperty('week'+i, 'visibility', 'visible');
   	}}
 
   // update the map
