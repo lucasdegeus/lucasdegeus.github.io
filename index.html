@@ -232,6 +232,7 @@ function substanceSwitch() {
 document.getElementById('slider').addEventListener('input', function(e) {
   var week = parseInt(e.target.value);
   currentActive = ('week'+week);
+  var currentSub = document.getElementById("substances").value
 
   //checken of de week al exists
   for (var i = 0; i < 5; i++) {
