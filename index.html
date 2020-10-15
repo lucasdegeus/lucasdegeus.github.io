@@ -224,7 +224,7 @@ map.addLayer({
 function substanceSwitch() {
   var currentSub = document.getElementById("substances").value
   var week = parseInt(document.getElementById('slider').value);
-  for (var i = 1; i < 5; i++) {
+  for (var i = 1; i <= 7; i++) {
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
   		if (nonExist) {
@@ -232,8 +232,7 @@ function substanceSwitch() {
   		}
       map.removeLayer('week'+i);
       map.removeSource('week'+i); }
-  mapCreate(currentSub+'/week'+week+".geojson", 'week'+week);
-  map.setLayoutProperty('week'+week, 'visibility', 'visible');
+	chunkLoader(currentSub,week);
   console.log('hi')
 }
 
@@ -246,7 +245,8 @@ function chunkLoader(currentSub,currentWeek) {
   			continue;
   		}
 		if (i == currentWeek) {
-			chunkLoader(currentSub,i);
+			mapCreate(currentSub+'/week'+currentWeek+".geojson", 'week'+currentWeek, 'visible');
+  			map.setLayoutProperty('week'+currentWeek, 'visibility', 'visible');
   			continue;
 		}
 		mapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'none');
@@ -260,7 +260,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   var currentSub = document.getElementById("substances").value
 
   //checken of de week al exists
-  for (var i = 1; i < 5; i++) {
+  for (var i = 1; i <= 7; i++) {
       // console.log(i);
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
@@ -278,6 +278,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   	if (i == week) {
   		if (nonExist) {
   			chunkLoader(currentSub,i);
+  			mapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'visible');
   		}
   		map.setLayoutProperty('week'+i, 'visibility', 'visible');
   	}}
