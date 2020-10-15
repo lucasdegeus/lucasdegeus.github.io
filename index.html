@@ -275,7 +275,6 @@ map2019.on('load', function () {
     //   'circle-opacity': 0.8
     // }
     // 'filter': ['==', ['number', ['get', 'week']], 1]
-  });
 map2019.addSource('week1', {
 'type': 'geojson',
 'data': '/week1.geojson'
@@ -295,6 +294,7 @@ map2019.addLayer({
         // 'circle-opacity': 1
       }
    });
+  });
 
 
 function mapCreate(filepath, id, visibility) {
