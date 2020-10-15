@@ -201,7 +201,6 @@ map.addSource('eventscovid', {
     //   'circle-opacity': 0.8
     // }
     // 'filter': ['==', ['number', ['get', 'week']], 1]
-  	map.moveLayer('eventscovid');  
   });
 map.addSource('week1', {
 'type': 'geojson',
@@ -228,6 +227,7 @@ map.addLayer({
 
 
 map2019.on('load', function () {
+	map.moveLayer('eventscovid');
 // data from opendata.cityofboise.org/
 // map2019.addSource('eventscovid', {
 // 'type': 'geojson',
