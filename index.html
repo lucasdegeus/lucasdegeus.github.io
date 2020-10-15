@@ -138,7 +138,7 @@ cursor: ew-resize;
 		</div>
 
         <label id="substanceLable">Particle:</label>
-			<select id="substances" onchange="secondSubstanceSwitch()" onchange="substanceSwitch()" >
+			<select id="substances" onchange="runBoth()" >
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
 			</select>
@@ -158,6 +158,10 @@ cursor: ew-resize;
 
 
 <script>
+function runBoth() {
+	secondSubstanceSwitch();
+	substanceSwitch();
+}
 var bounds = [
 [-30, 30], // Southwest coordinates
 [60, 80] // Northeast coordinates
