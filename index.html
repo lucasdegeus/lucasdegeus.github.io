@@ -443,7 +443,9 @@ document.getElementById('slider').addEventListener('input', function(e) {
         map2019.removeLayer('week'+i);
         map2019.removeSource('week'+i);
       }
-      else { map.setLayoutProperty('week'+i, 'visibility', 'none'); }
+      else { 
+      	map.setLayoutProperty('week'+i, 'visibility', 'none');
+      	map2019.setLayoutProperty('week'+i, 'visibility', 'none'); }
   	}
   	if (i == week) {
   		chunkLoader(currentSub,i);
