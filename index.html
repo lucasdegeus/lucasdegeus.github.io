@@ -109,6 +109,11 @@ a {
   <input id='slider' class='row' type='range' min='1' max='4' step='1' value='1' />
 </div>
 
+<select id="substances" onchange="substanceSwitch()">
+  <option value="weeks">Optie 1</option>
+  <option value="differentsubstanceweeks">Optie 2</option>
+</select>
+
 </div>
 </div>
 <script>
@@ -213,6 +218,17 @@ map.addLayer({
 }
 
 
+
+
+
+function substanceSwitch() {
+  var currentSub = document.getElementById("substances").value
+  for (var i = 0; i < 5; i++) {
+      map.removeLayer('week'+i);
+      map.removeSource('week'+i); }
+  mapCreate(currentSub+'/week'+1+".geojson", 'week'+1);
+}
+
 document.getElementById('slider').addEventListener('input', function(e) {
   var week = parseInt(e.target.value);
   currentActive = ('week'+week);
@@ -235,7 +251,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   	}
   	if (i == week) {
   		if (nonExist) {
-  			mapCreate('week'+i+".geojson", 'week'+i);
+  			mapCreate(currentSub+'/week'+i+".geojson", 'week'+i);
   		}
   		map.setLayoutProperty('week'+i, 'visibility', 'visible');
   	}}
