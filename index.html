@@ -160,6 +160,7 @@ maxZoom: maxZoomOfMap
 });
 
 map.on('load', function () {
+document.getElementById('slider').value = 0;
 // data from opendata.cityofboise.org/
 map.addSource('eventscovid', {
 'type': 'geojson',
