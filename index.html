@@ -278,7 +278,6 @@ document.getElementById('slider').addEventListener('input', function(e) {
   	if (i == week) {
   		if (nonExist) {
   			chunkLoader(currentSub,i);
-  			mapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'visible');
   		}
   		map.setLayoutProperty('week'+i, 'visibility', 'visible');
   	}}
