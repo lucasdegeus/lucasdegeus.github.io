@@ -232,6 +232,7 @@ function substanceSwitch() {
   		}
       map.removeLayer('week'+i);
       map.removeSource('week'+i); }
+      console.log("substanceSwitch")
 	chunkLoader(currentSub,week);
   console.log('hi')
 }
@@ -241,6 +242,7 @@ function chunkLoader(currentSub,currentWeek) {
 	for (var i = currentWeek-2; i<=currentWeek+2;i++) {
 		mapLayer = map.getLayer('week'+i)
   		nonExist = (typeof mapLayer == 'undefined')
+  		console.log("chunkie")
   		if (!nonExist || i < 1 || i > 42) {
   			continue;
   		}
@@ -277,6 +279,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   	}
   	if (i == week) {
   		if (nonExist) {
+    	  console.log("event ding")
   			chunkLoader(currentSub,i);
   		}
   		map.setLayoutProperty('week'+i, 'visibility', 'visible');
