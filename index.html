@@ -253,28 +253,41 @@ map.addLayer({
 
 map2019.on('load', function () {
 // data from opendata.cityofboise.org/
+// map2019.addSource('eventscovid', {
+// 'type': 'geojson',
+// 'data': '/events.geojson'
+// });
 
-    //   'circle-radius': [
-    //     'interpolate',
-    //     ['linear'],
-    //     ['number', ['get', 'Casualty']],
-    //     0, 4,
-    //     5, 24
-    //   ],
-    //   'circle-color': [
-    //     'interpolate',
-    //     ['linear'],
-    //     ['number', ['get', 'Casualty']],
-    //     0, '#2DC4B2',
-    //     1, '#3BB3C3',
-    //     2, '#669EC4',
-    //     3, '#8B88B6',
-    //     4, '#A2719B',
-    //     5, '#AA5E79'
-    //   ],
-    //   'circle-opacity': 0.8
-    // }
-    // 'filter': ['==', ['number', ['get', 'week']], 1]
+//   map2019.addLayer({
+//     'id': 'eventscovid',
+//     'type': 'symbol',
+//     'source': 'eventscovid',
+//     'filter': ['==', ['number', ['get', 'week']], 1],
+//     'layout': {
+//     	'text-field' : ['format',['downcase', ['get', 'name']]]}
+//     // paint: {
+//     //   'circle-radius': [
+//     //     'interpolate',
+//     //     ['linear'],
+//     //     ['number', ['get', 'Casualty']],
+//     //     0, 4,
+//     //     5, 24
+//     //   ],
+//     //   'circle-color': [
+//     //     'interpolate',
+//     //     ['linear'],
+//     //     ['number', ['get', 'Casualty']],
+//     //     0, '#2DC4B2',
+//     //     1, '#3BB3C3',
+//     //     2, '#669EC4',
+//     //     3, '#8B88B6',
+//     //     4, '#A2719B',
+//     //     5, '#AA5E79'
+//     //   ],
+//     //   'circle-opacity': 0.8
+//     // }
+//     // 'filter': ['==', ['number', ['get', 'week']], 1]
+//   });
 map2019.addSource('week1', {
 'type': 'geojson',
 'data': '/week1.geojson'
@@ -294,7 +307,7 @@ map2019.addLayer({
         // 'circle-opacity': 1
       }
    });
-  });
+});
 
 
 function mapCreate(filepath, id, visibility) {
