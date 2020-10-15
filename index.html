@@ -204,7 +204,7 @@ map.addSource('eventscovid', {
   });
 map.addSource('week1', {
 'type': 'geojson',
-'data': '/weeks/week1.geojson'
+'data': '/data/2020/weeks/week1.geojson'
 });
 map.addLayer({
       'id': 'week1',
@@ -265,7 +265,7 @@ map2019.on('load', function () {
 //   });
 map2019.addSource('week1', {
 'type': 'geojson',
-'data': '/weeks/week1.geojson'
+'data': '/data/2019/weeks/week1.geojson'
 });
 map2019.addLayer({
       'id': 'week1',
@@ -288,7 +288,7 @@ map2019.addLayer({
 function mapCreate(filepath, id, visibility) {
 	map.addSource(id, {
 'type': 'geojson',
-'data': filepath
+'data': '/data/2020/' + filepath
 });
 map.addLayer({
       'id': id,
@@ -310,7 +310,7 @@ map.addLayer({
 function secondMapCreate(filepath, id, visibility) {
 	map2019.addSource(id, {
 'type': 'geojson',
-'data': filepath
+'data': '/data/2019/' + filepath
 });
 map2019.addLayer({
       'id': id,
