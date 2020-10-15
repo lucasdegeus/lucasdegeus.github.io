@@ -389,6 +389,7 @@ function chunkLoader(currentSub,currentWeek) {
 		mapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'none');
 
 	}
+	map.moveLayer('eventscovid');
 }
 
 
@@ -405,7 +406,7 @@ function secondChunkLoader(currentSub,currentWeek) {
   			continue;
 		}
 		secondMapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'none');
-
+	map2019.moveLayer('eventscovid');
 	}
 }
 
