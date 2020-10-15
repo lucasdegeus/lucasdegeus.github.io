@@ -223,7 +223,7 @@ map.addLayer({
 
 function substanceSwitch() {
   var currentSub = document.getElementById("substances").value
-  for (var i = 0; i < 5; i++) {
+  for (var i = 1; i < 5; i++) {
       map.removeLayer('week'+i);
       map.removeSource('week'+i); }
   mapCreate(currentSub+'/week'+1+".geojson", 'week'+1);
@@ -235,7 +235,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   var currentSub = document.getElementById("substances").value
 
   //checken of de week al exists
-  for (var i = 0; i < 5; i++) {
+  for (var i = 1; i < 5; i++) {
       // console.log(i);
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
