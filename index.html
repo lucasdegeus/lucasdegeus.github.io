@@ -252,19 +252,7 @@ map.addLayer({
 
 map2019.on('load', function () {
 // data from opendata.cityofboise.org/
-map2019.addSource('eventscovid', {
-'type': 'geojson',
-'data': '/events.geojson'
-});
 
-  map2019.addLayer({
-    'id': 'eventscovid',
-    'type': 'symbol',
-    'source': 'eventscovid',
-    'filter': ['==', ['number', ['get', 'week']], 1],
-    'layout': {
-    	'text-field' : ['format',['downcase', ['get', 'name']]]}
-    // paint: {
     //   'circle-radius': [
     //     'interpolate',
     //     ['linear'],
