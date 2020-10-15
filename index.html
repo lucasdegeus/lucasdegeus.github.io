@@ -37,93 +37,134 @@ Latest commit 276cea5 2 minutes ago
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
-}
-
-#map {
-  position: absolute;
+  body { margin: 0; padding: 0; }
+  .map { position: absolute; top: 0; bottom: 0; width: 100%; }
+   /* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
   top: 0;
-  bottom: 0;
-  width: 100%;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-h1 {
-  font-size: 20px;
-  line-height: 30px;
+/* Control the left side */
+.left {
+  left: 0;
 }
 
-h2 {
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 10px;
+/* Control the right side */
+.right {
+  right: 0;
 }
 
-a {
-  text-decoration: none;
-  color: #2dc4b2;
+.map-overlay {
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+position: absolute;
+width: 25%;
+top: 0;
+left: 0;
+padding: 10px;
 }
-
-#console {
-  position: absolute;
-  width: 240px;
-  margin: 10px;
-  padding: 10px 20px;
-  background-color: white;
+ 
+.map-overlay .map-overlay-inner {
+background-color: #fff;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+border-radius: 3px;
+padding: 10px;
+margin-bottom: 10px;
 }
-.session {
-  margin-bottom: 20px;
+ 
+.map-overlay h2 {
+line-height: 24px;
+display: block;
+margin: 0 0 10px;
 }
-
-.row {
-  height: 12px;
-  width: 100%;
+ 
+.map-overlay .legend .bar {
+height: 10px;
+width: 100%;
+background: linear-gradient(to right, #fca107, #7f3121);
 }
-
-.colors {
-  background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
-  margin-bottom: 5px;
-}
-
-.label {
-  width: 15%;
-  display: inline-block;
-  text-align: center;
+ 
+.map-overlay input {
+background-color: transparent;
+display: inline-block;
+width: 100%;
+position: relative;
+margin: 0;
+cursor: ew-resize;
 }
 </style>
 </head>
 
-<body>
-<div id='map'></div>
-<div id='console'>
-  <h1>Lockdown strictness</h1>
-<div class='session'>
-  	<h2>Strictness 0 (none) - 100 (strict)</h2>
+<!-- <body> -->
+<!-- <div id='map'></div> -->
+<!-- <div id='console'> -->
+  <!-- <h1>Lockdown strictness</h1> -->
+<!-- <div class='session'> -->
+  	<!-- <h2>Strictness 0 (none) - 100 (strict)</h2> -->
 
 
 
- <div class='session' id='sliderbar'>
-  <h2>Week: <label id='active-hour'>1</label></h2>
-  <input id='slider' class='row' type='range' min='1' max='7' step='1' value='1' />
+ <!-- <div class='session' id='sliderbar'> -->
+  <!-- <h2>Week: <label id='active-hour'>1</label></h2> -->
+  <!-- <input id='slider' class='row' type='range' min='1' max='7' step='1' value='1' /> -->
+<!-- </div> -->
+
+<!-- // <select id="substances" onchange="substanceSwitch()"> -->
+  <!-- <option value="weeks">Optie 1</option> -->
+  <!-- <option value="differentsubstanceweeks">Optie 2</option> -->
+<!-- </select> -->
+
+<!-- </div> -->
+<!-- </div> -->
+
+
+
+<body> 
+
+ <div class="split left">
+    <div id="map" class=map></div>
+    <div class="map-overlay top">
+      <div class="map-overlay-inner">
+        <h2>Week (left screen: 2020, right screen: 2019)</h2>
+
+ 		<div class='session' id='sliderbar'>
+  			<h2>Week: <label id='active-hour'>1</label></h2>
+  			<input id='slider' class='row' type='range' min='1' max='7' step='1' value='1' />
+		</div>
+
+        <label id="substanceLable">Particle:</label>
+			<select id="substances" onchange="substanceSwitch()">
+  				<option value="weeks">Optie 1</option>
+  				<option value="differentsubstanceweeks">Optie 2</option>
+			</select>
+
+      </div>
+    </div>
+    <div class="map-overlay-inner">
+      <div id="legend" class="legend">
+        
+    </div>
+    </div>
 </div>
 
-<select id="substances" onchange="substanceSwitch()">
-  <option value="weeks">Optie 1</option>
-  <option value="differentsubstanceweeks">Optie 2</option>
-</select>
+<div class="split right">
+    <div id="map2019" class=map></div>
+</div> 
 
-</div>
-</div>
+
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
 var bounds = [
 [-30, 30], // Southwest coordinates
 [60, 80] // Northeast coordinates
 ];
 centerOfMap = [0,0];
 maxZoomOfMap = 10;
+mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v10',
@@ -134,7 +175,15 @@ maxBounds: bounds,
 maxZoom: maxZoomOfMap
 });
 
-
+mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
+var map2019 = new mapboxgl.Map({
+container: 'map2019', // container id
+style: 'mapbox://styles/mapbox/streets-v11', // style URL
+center: centerOfMap, // starting position [lng, lat]
+zoom: 0, // starting zoom
+maxBounds: bounds,
+maxZoom: maxZoomOfMap
+});
 
 map.on('load', function () {
 // data from opendata.cityofboise.org/
@@ -178,6 +227,67 @@ map.addSource('week1', {
 'data': '/week1.geojson'
 });
 map.addLayer({
+      'id': 'week1',
+      'type': 'circle',
+      'source': 'week1',
+      // 'filter': ['==', ['number', ['get', 'week']], 1],
+      'layout': {
+         'visibility': 'visible'
+      },
+      'paint': {
+        'circle-radius': 5,
+        'circle-color': ['get', 'fill'],
+//         'circle-blur': 1,
+        // 'circle-opacity': 1
+      }
+   });
+});
+
+
+
+
+map2019.on('load', function () {
+// data from opendata.cityofboise.org/
+map2019.addSource('eventscovid', {
+'type': 'geojson',
+'data': '/events.geojson'
+});
+
+  map2019.addLayer({
+    'id': 'eventscovid',
+    'type': 'symbol',
+    'source': 'eventscovid',
+    'filter': ['==', ['number', ['get', 'week']], 1],
+    'layout': {
+    	'text-field' : ['format',['downcase', ['get', 'name']]]}
+    // paint: {
+    //   'circle-radius': [
+    //     'interpolate',
+    //     ['linear'],
+    //     ['number', ['get', 'Casualty']],
+    //     0, 4,
+    //     5, 24
+    //   ],
+    //   'circle-color': [
+    //     'interpolate',
+    //     ['linear'],
+    //     ['number', ['get', 'Casualty']],
+    //     0, '#2DC4B2',
+    //     1, '#3BB3C3',
+    //     2, '#669EC4',
+    //     3, '#8B88B6',
+    //     4, '#A2719B',
+    //     5, '#AA5E79'
+    //   ],
+    //   'circle-opacity': 0.8
+    // }
+    // 'filter': ['==', ['number', ['get', 'week']], 1]
+  });
+map2019.addSource('week1', {
+'type': 'geojson',
+'data': '/week1.geojson'
+});
+map2019.addLayer({
       'id': 'week1',
       'type': 'circle',
       'source': 'week1',
