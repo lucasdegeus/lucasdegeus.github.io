@@ -224,7 +224,7 @@ map.addLayer({
 function substanceSwitch() {
   var currentSub = document.getElementById("substances").value
   var week = parseInt(document.getElementById('slider').value);
-  for (var i = 1; i <= 7; i++) {
+  for (var i = 1; i < 8; i++) {
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
   		if (nonExist) {
@@ -243,7 +243,7 @@ function chunkLoader(currentSub,currentWeek) {
 		mapLayer = map.getLayer('week'+i)
   		nonExist = (typeof mapLayer == 'undefined')
   		console.log("chunkie")
-  		if (!nonExist || i < 1 || i >= 7) {
+  		if (!nonExist || i < 1 || i > 8) {
   			continue;
   		}
 		if (i == currentWeek) {
@@ -262,7 +262,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   var currentSub = document.getElementById("substances").value
 
   //checken of de week al exists
-  for (var i = 1; i <= 7; i++) {
+  for (var i = 1; i < 8; i++) {
       // console.log(i);
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
