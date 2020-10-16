@@ -287,12 +287,10 @@ map.addSource('eventscovid', {
     'source': 'eventscovid',
     'filter': ['==', ['number', ['get', 'week']], 1],
     'layout': {
-    	'text-field' : ['format',['downcase', ['get', 'name']]]},
-    	"paint": {
-    		 "text-color": "#202",
-                "text-halo-color": "#fff",
-                "text-halo-width": 3
-            },
+      'text-field' : ['get', 'name']},
+      'paint' : {'text-color' : ['get', 'fill'],
+      			"text-halo-color": "#fff",
+                "text-halo-width": 3}
     // paint: {
     //   'circle-radius': [
     //     'interpolate',
