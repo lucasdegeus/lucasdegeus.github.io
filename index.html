@@ -498,5 +498,51 @@ document.getElementById('slider').addEventListener('input', function(e) {
   // update text in the UI
   document.getElementById('active-hour').innerText = week;
 });
+
+
+
+map
+  .on('drag', function() {
+    sync2019();
+  })
+  .on('zoom', function() {
+    sync2019();
+  });
+
+function sync2019() {
+  var mapCenter = map.getCenter();
+  var mapZoom = map.getZoom();
+  var mapBearing = map.getBearing();
+  var mapPitch = map.getPitch();
+
+  map2019.jumpTo({
+    center: [mapCenter.lng, mapCenter.lat],
+    zoom: [mapZoom],
+    bearing: [mapBearing],
+    pitch: [mapPitch]
+  })
+}
+
+map2019
+  .on('drag', function() {
+    sync2020();
+  })
+  .on('zoom', function() {
+    sync2020();
+  });
+
+function sync2020() {
+  var mapCenter = map2019.getCenter();
+  var mapZoom = map2019.getZoom();
+  var mapBearing = map2019.getBearing();
+  var mapPitch = map2019.getPitch();
+
+  map.jumpTo({
+    center: [mapCenter.lng, mapCenter.lat],
+    zoom: [mapZoom],
+    bearing: [mapBearing],
+    pitch: [mapPitch]
+  })
+}
 </script>
 </body>
