@@ -72,7 +72,7 @@ cursor: ew-resize;
 	display:inline-block;
 }
 
-.example_e {
+.butC, .butB {
 border: none;
 background: #404040;
 color: #ffffff !important;
@@ -83,7 +83,7 @@ border-radius: 6px;
 transition: all 0.3s ease 0s;
 }
 
-.example_e:hover,.active {
+.butC:hover,.activeC {
 color: #404040 !important;
 font-weight: 700 !important;
 letter-spacing: 3px;
@@ -91,6 +91,16 @@ background: none;
 -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 transition: all 0.3s ease 0s;
+}
+
+.activeC {
+color: #404040 !important;
+font-weight: 700 !important;
+/*letter-spacing: 3px;*/
+background: none;
+/*-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);*/
+/*-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);*/
+/*transition: all 0.3s ease 0s;*/
 }
 </style>
 </head>
@@ -139,11 +149,11 @@ transition: all 0.3s ease 0s;
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
 			</select> -->
-		<div class="button_cont"><a class="example_e active" id="strictness" onclick="toggleStrict()">Strictness data: ON</a></div><br><br>
+		<div class="button_cont"><a class="butB activeB" id="strictness" onclick="toggleStrict()">Strictness data: ON</a></div><br><br>
 <div id="wrapper">
-		<div class="button_cont"><a class="example_e active" id="NO2"  onclick="setInvisSelect('NO2')">NO2</a></div>
-		<div class="button_cont"><a class="example_e" id="SO2" onclick="setInvisSelect('SO2')">SO2</a></div>
-		<div class="button_cont"><a class="example_e" id="CH4" onclick="setInvisSelect('CH4')">CH4</a></div>
+		<div class="button_cont"><a class="butC activeC" id="NO2"  onclick="setInvisSelect('NO2')">NO2</a></div>
+		<div class="button_cont"><a class="butC" id="SO2" onclick="setInvisSelect('SO2')">SO2</a></div>
+		<div class="button_cont"><a class="butC" id="CH4" onclick="setInvisSelect('CH4')">CH4</a></div>
 
 
       </div>
@@ -168,28 +178,29 @@ transition: all 0.3s ease 0s;
 
 
 function toggleStrict() {
-	if (document.getElementById('strictness').classList.contains('active')) {
+	if (document.getElementById('strictness').classList.contains('activeB')) {
 		document.getElementById("lockdownTog").checked = false;
 		document.getElementById('strictness').innerHTML = 'Strictness data: OFF';
-		document.getElementById('strictness').classList.remove("active");
 		toggleLockdown()
 
 	}
 	else {
 		document.getElementById("lockdownTog").checked = true;
-		document.getElementById('strictness').classList.add("active");
+		document.getElementById('strictness').classList.add("activeB");
 		document.getElementById('strictness').innerHTML = 'Strictness data: ON';
 		toggleLockdown()
+		return
 	}
+	document.getElementById('strictness').classList.remove("activeB");
 }
 
 function off(substance) {
 	var substances = ['NO2', 'SO2', 'CH4'];
 	substances.forEach(toggleButtons);
-	document.getElementById(substance).classList.add("active");
+	document.getElementById(substance).classList.add("activeC");
 }
 function toggleButtons(substance) {
-	document.getElementById(substance).classList.remove("active");
+	document.getElementById(substance).classList.remove("activeC");
 }
 
 function setInvisSelect(value) {
