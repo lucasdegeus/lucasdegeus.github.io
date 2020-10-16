@@ -169,14 +169,14 @@ transition: all 0.3s ease 0s;
 
 function toggleStrict() {
 	if (document.getElementById('strictness').classList.contains('active')) {
-		document.getElementById("strictness").checked = false;
+		document.getElementById("lockdownTog").checked = false;
 		document.getElementById('strictness').innerHTML = 'Strictness data: OFF';
 		document.getElementById('strictness').classList.remove("active");
 		toggleLockdown()
 
 	}
 	else {
-		document.getElementById("strictness").checked = true;
+		document.getElementById("lockdownTog").checked = true;
 		document.getElementById('strictness').classList.add("active");
 		document.getElementById('strictness').innerHTML = 'Strictness data: ON';
 		toggleLockdown()
