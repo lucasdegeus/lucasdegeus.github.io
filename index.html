@@ -168,6 +168,7 @@ transition: all 0.3s ease 0s;
 function setInvisSelect(value) {
 	document.getElementById('substances').value = value;
 	document.getElementById('currentDisplay').innerHTML = "Currently displayed: " + value;
+	runBoth();
 
 }
 function toggleLockdown() {
