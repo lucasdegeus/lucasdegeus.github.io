@@ -131,10 +131,10 @@ function runBoth() {
 	secondSubstanceSwitch();
 	substanceSwitch();
 }
-var bounds = [
-[-30, 30], // Southwest coordinates
-[60, 80] // Northeast coordinates
-];
+// var bounds = [
+// [-30, 30], // Southwest coordinates
+// [60, 80] // Northeast coordinates
+// ];
 centerOfMap = [0,0];
 maxZoomOfMap = 10;
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
@@ -143,8 +143,8 @@ var map = new mapboxgl.Map({
   style: 'mapbox://styles/mapbox/light-v10',
   center:centerOfMap, // initial map center in [lon, lat]
   zoom: 0,
-  minzoom: 2,
-maxBounds: bounds,
+  minzoom: 1,
+// maxBounds: bounds,
 maxZoom: maxZoomOfMap
 });
 
@@ -154,8 +154,8 @@ var map2019 = new mapboxgl.Map({
   style: 'mapbox://styles/mapbox/light-v10',
   center:centerOfMap, // initial map center in [lon, lat]
   zoom: 0,
-  minzoom: 2,
-maxBounds: bounds,
+  minzoom: 1,
+// maxBounds: bounds,
 maxZoom: maxZoomOfMap
 });
 
