@@ -514,7 +514,7 @@ map
   .on('drag', function() {
     sync2019();
   })
-  .on('zoom', function() {
+  .on('zoomend', function() {
     sync2019();
   });
 
@@ -536,7 +536,7 @@ map2019
   .on('drag', function() {
     sync2020();
   })
-  .on('zoom', function() {
+  .on('zoomend', function() {
     sync2020();
   });
 
