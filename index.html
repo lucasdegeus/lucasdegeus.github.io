@@ -9,8 +9,48 @@
   body { margin: 0; padding: 0; }
   .map { position: absolute; top: 0; bottom: 0; width: 100%; }
    /* Split the screen in half */
+
+ /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 20px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 .slidecontainer {
   width: 100%;
+  margin-bottom: 15px;
 }
 
 .slider {
@@ -85,6 +125,7 @@ border-radius: 3px;
 padding: 10px;
 margin-bottom: 10px;
 text-align: center;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
  
 .map-overlay h2 {
@@ -110,7 +151,7 @@ cursor: ew-resize;
 
 .button_cont {
 	margin: 5px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	margin-top:20px;
 	display:inline-block;
 }
@@ -139,7 +180,7 @@ transition: all 0.3s ease 0s;
 
 .butB {
 margin-top: 20px;
-margin-bottom: 20px;
+margin-bottom: 25px;
 border: none;
 background: #404040;
 color: #ffffff !important;
@@ -198,6 +239,17 @@ transition: all 0.3s ease 0s;
 }
 
 
+
+.newTitle {
+font-weight: 100;
+text-transform: uppercase;
+transition: all 0.3s ease 0s;
+background: #404040; color:white;
+margin:0;
+font-size:14px;
+padding:10px;
+font-size: 15px;
+}
 </style>
 </head>
 
@@ -232,10 +284,26 @@ transition: all 0.3s ease 0s;
      <div class="yearLabelLeft" style="float:right;"><div style="margin-top:12.5px;">2019</div></div>
     <div class="map-overlay top">
       <div class="map-overlay-inner">
-        <h2>Air pollution and COVID-19</h2>
+        <p class="newTitle" style="background: #404040; color:white; margin:0;  font-size:14px; padding:10px; font-size: 15px;">Air pollution and COVID-19</p>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn"  class="butB activeB">Show project description</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal" style="display: none;z-index: 1;position: absolute;">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+        	<p style="margin: 0;">An interactive map that shows differences between pollution in 2019 and 2020. To present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
+  </div>
+
+</div>
+
+        </p>
 
  		<div class='session slidecontainer' id='sliderbar'>
-  			<h2>Week: <label id='active-hour'>1</label></h2>
+  			<div style="margin-bottom: 5px; font-size: 14px">Week: <label id='active-hour'>1</label></div>
   			<input id='slider' class='row slider' type='range' min='1' max='7' step='1' value='1' />
 		</div>
 
@@ -285,7 +353,20 @@ transition: all 0.3s ease 0s;
 				<p style="background-color: white; display: inline;">hi</p></div> -->
 </div>
 <script>
-
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 
 function toggleStrict() {
