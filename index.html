@@ -96,7 +96,7 @@ cursor: ew-resize;
 <body> 
 
  <div class="split left">
-    <div id="map" class=map></div>
+    <div id="map2019" class=map></div>
     <div class="map-overlay top">
       <div class="map-overlay-inner">
         <h2>Week (left screen: 2020, right screen: 2019)</h2>
@@ -105,6 +105,10 @@ cursor: ew-resize;
   			<h2>Week: <label id='active-hour'>1</label></h2>
   			<input id='slider' class='row' type='range' min='1' max='7' step='1' value='1' />
 		</div>
+
+		<label for="myCheck">Toggle lockdown data:</label> 
+		<input type="checkbox" name="tog" id="lockdownTog" checked="true" onclick="toggleLockdown()">
+
 
         <label id="substanceLable">Particle:</label>
 			<select id="substances" onchange="runBoth()" >
@@ -122,11 +126,20 @@ cursor: ew-resize;
 </div>
 
 <div class="split right">
-    <div id="map2019" class=map></div>
+    <div id="map" class=map></div>
 </div> 
 
 
 <script>
+toggleLockdown() {
+	if (document.getElementById('lockdownTog').checked == true) {
+		map.setLayoutProperty('eventscovid', 'visibility', 'visible');
+	}
+	else {
+		map.setLayoutProperty('eventscovid', 'visibility', 'none');
+	}
+}
+
 function runBoth() {
 	secondSubstanceSwitch();
 	substanceSwitch();
