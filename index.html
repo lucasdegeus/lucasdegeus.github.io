@@ -274,10 +274,16 @@ transition: all 0.3s ease 0s;
 		</select>
 </div>
 
-
-		<div style="position: absolute; z-index: 1; margin-top: 45%; margin-left: 25%; width:50%;">
-		<img src="colorbars/NO2Color.jpeg" alt="Italian Trulli">
-	</div>
+<div>
+	<!-- <div style="width: 25%;float: left;margin-top: 45%;z-index: 2;position: relative;text-align:right;">hi</div> -->
+		<img id="colorbar" src="colorbars/NO2Color.jpeg" style="    position: absolute;
+    z-index: 1;
+    margin-top: 45%;
+    margin-left: 25%;
+    width: 50%;" alt="colorbar">
+<!-- 			<div style="width: 25%;float: right;margin-top: 45%;z-index: 2;position: relative;text-align: ">
+				<p style="background-color: white; display: inline;">hi</p></div> -->
+</div>
 <script>
 
 
@@ -311,8 +317,14 @@ function toggleButtons(substance) {
 function setInvisSelect(value) {
 	document.getElementById("substances").value = value;
 	off(value);
+	changeBar();
 	runBoth();
 
+}
+
+function changeBar() {
+  var currentSub = document.getElementById("substances").value
+  document.getElementById('colorbar').src = "colorbars/" + currentSub + "Color.jpeg";
 }
 function toggleLockdown() {
 	if (document.getElementById('lockdownTog').checked == true) {
