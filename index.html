@@ -137,7 +137,11 @@ transition: all 0.3s ease 0s;
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
 			</select>
-		<div class="button_cont" align="center"><a class="example_e" onclick="alert('hi')">Add Call to Action</a></div>
+		<h3 id="currentDisplay">Currently displayed: NO2</h3>
+		<div class="button_cont" align="center"><a class="example_e" onclick="setInvisSelect('NO2')">NO2</a></div>
+		<div class="button_cont" align="center"><a class="example_e" onclick="setInvisSelect('SO2')">SO2</a></div>
+		<div class="button_cont" align="center"><a class="example_e" onclick="setInvisSelect('O2')">O2</a></div>
+
 
       </div>
     </div>
@@ -154,6 +158,12 @@ transition: all 0.3s ease 0s;
 
 
 <script>
+
+function setInvisSelect(value) {
+	document.getElementById('substances').value = value;
+	document.getElementById('currentDisplay').innerHTML = "Currently displayed: " + value;
+
+}
 function toggleLockdown() {
 	if (document.getElementById('lockdownTog').checked == true) {
 		map.setLayoutProperty('eventscovid', 'visibility', 'visible');
