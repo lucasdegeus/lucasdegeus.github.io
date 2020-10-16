@@ -72,7 +72,7 @@ cursor: ew-resize;
 	display:inline-block;
 }
 
-.butC, .butB {
+.butC {
 border: none;
 background: #404040;
 color: #ffffff !important;
@@ -83,6 +83,7 @@ border-radius: 6px;
 transition: all 0.3s ease 0s;
 }
 
+
 .butC:hover,.activeC {
 color: #404040 !important;
 font-weight: 700 !important;
@@ -91,6 +92,18 @@ background: none;
 -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 transition: all 0.3s ease 0s;
+}
+
+.butB {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+transition: all 0.3s ease 0s;
+letter-spacing: 3px;
 }
 
 .activeB {
@@ -181,6 +194,7 @@ function toggleStrict() {
 	if (document.getElementById('strictness').classList.contains('activeB')) {
 		document.getElementById("lockdownTog").checked = false;
 		document.getElementById('strictness').innerHTML = 'Strictness data: OFF';
+		document.getElementById('strictness').classList.remove("activeB");
 		toggleLockdown()
 
 	}
