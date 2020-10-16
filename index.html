@@ -161,7 +161,7 @@ background: none;
 transition: all 0.3s ease 0s;
 }
 
-.yearLabel {
+.yearLabelRight {
     background-color: #404040;
     z-index: 999;
     width: 100px;
@@ -170,17 +170,24 @@ transition: all 0.3s ease 0s;
     text-align: center;
     color: white;
     font: 20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
-
-.yearLabel left {
-	border-top-left-radius:8px;
-	border-bottom-left-radius: 8px;
-}
-
-.yearLabel right {
-	border-top-right-radius:8px;
+    border-top-right-radius:8px;
 	border-bottom-right-radius: 8px;
 }
+
+.yearLabelLeft {
+    background-color: #404040;
+    z-index: 999;
+    width: 100px;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    color: white;
+    font: 20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    border-top-right-radius:8px;
+	border-bottom-right-radius: 8px;
+}
+
+
 
 </style>
 </head>
@@ -213,7 +220,7 @@ transition: all 0.3s ease 0s;
 
  <div class="split left">
     <div id="map2019" class=map></div>
-     <div class="yearLabel right" style="float:right;">2019</div>
+     <div class="yearLabelRight" style="float:right;">2019</div>
     <div class="map-overlay top">
       <div class="map-overlay-inner">
         <h2>Air pollution and COVID-19</h2>
@@ -244,7 +251,7 @@ transition: all 0.3s ease 0s;
 
 <div class="split right">
     <div id="map" class=map></div>
-    <div class="yearLabel left" style="float:left;">2020</div>
+    <div class="yearLabelLeft" style="float:left;">2020</div>
 </div> 
 
 <div style="display: none;">
