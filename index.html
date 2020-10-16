@@ -9,7 +9,43 @@
   body { margin: 0; padding: 0; }
   .map { position: absolute; top: 0; bottom: 0; width: 100%; }
    /* Split the screen in half */
+.slidecontainer {
+  width: 100%;
+}
 
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
  #slider {
  	width:80%;
  }
@@ -160,9 +196,9 @@ transition: all 0.3s ease 0s;
       <div class="map-overlay-inner">
         <h2>Air pollution and COVID-19</h2>
 
- 		<div class='session' id='sliderbar'>
+ 		<div class='session slidecontainer' id='sliderbar'>
   			<h2>Week: <label id='active-hour'>1</label></h2>
-  			<input id='slider' class='row' type='range' min='1' max='7' step='1' value='1' />
+  			<input id='slider' class='row slider' type='range' min='1' max='7' step='1' value='1' />
 		</div>
 
 
