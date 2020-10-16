@@ -132,11 +132,11 @@ transition: all 0.3s ease 0s;
 		<input type="checkbox" name="tog" id="lockdownTog" checked="true" onclick="toggleLockdown()">
 
 
-        <label id="substanceLable">Particle:</label>
+<!--         <label id="substanceLable">Particle:</label>
 			<select id="substances" onchange="runBoth()" >
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
-			</select>
+			</select> -->
 		<h3 id="currentDisplay">Currently displayed: NO2</h3>
 		<div class="button_cont" align="center"><a class="example_e" onclick="setInvisSelect('NO2')">NO2</a></div>
 		<div class="button_cont" align="center"><a class="example_e" onclick="setInvisSelect('SO2')">SO2</a></div>
@@ -156,7 +156,13 @@ transition: all 0.3s ease 0s;
     <div id="map" class=map></div>
 </div> 
 
-
+<div style="display: none;">
+    <label id="substanceLable">Particle:</label>
+		<select id="substances" onchange="runBoth()" >
+  			<option value="weeks">Optie 1</option>
+  			<option value="differentsubstanceweeks">Optie 2</option>
+		</select>
+</div>
 <script>
 
 function setInvisSelect(value) {
