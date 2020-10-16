@@ -168,6 +168,7 @@ transition: all 0.3s ease 0s;
 
 
 function toggleStrict() {
+	toggleLockdown()
 	if (document.getElementById('strictness').classList.contains('active')) {
 		document.getElementById('strictness').innerHTML = 'Strictness data: OFF';
 		document.getElementById('strictness').classList.remove("active");
