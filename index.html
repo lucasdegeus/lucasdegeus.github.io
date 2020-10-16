@@ -139,7 +139,7 @@ transition: all 0.3s ease 0s;
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
 			</select> -->
-		<div class="button_cont"><a class="example_e active" id="strictness" onclick="toggleStrict()">NO2</a></div><br><br>
+		<div class="button_cont"><a class="example_e active" id="strictness" onclick="toggleStrict()">Strictness data: ON</a></div><br><br>
 <div id="wrapper">
 		<div class="button_cont"><a class="example_e active" id="NO2"  onclick="setInvisSelect('NO2')">NO2</a></div>
 		<div class="button_cont"><a class="example_e" id="SO2" onclick="setInvisSelect('SO2')">SO2</a></div>
@@ -169,10 +169,12 @@ transition: all 0.3s ease 0s;
 
 function toggleStrict() {
 	if (document.getElementById('strictness').classList.contains('active')) {
+		document.getElementById('strictness').innerHTML = 'Strictness data: OFF';
 		document.getElementById('strictness').classList.remove("active");
 	}
 	else {
 		document.getElementById('strictness').classList.add("active");
+		document.getElementById('strictness').innerHTML = 'Strictness data: ON';
 	}
 }
 
