@@ -83,7 +83,7 @@ border-radius: 6px;
 transition: all 0.3s ease 0s;
 }
 
-.example_e:hover,:active {
+.example_e:hover,.active {
 color: #404040 !important;
 font-weight: 700 !important;
 letter-spacing: 3px;
@@ -141,9 +141,8 @@ transition: all 0.3s ease 0s;
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
 			</select> -->
-		<h3 id="currentDisplay">Currently displayed: NO2</h3>
 <div id="wrapper">
-		<div class="button_cont"><a class="example_e" onclick="setInvisSelect('weeks')">NO2</a></div>
+		<div class="button_cont"><a class="example_e active" onclick="setInvisSelect('NO2')">NO2</a></div>
 		<div class="button_cont"><a class="example_e" onclick="setInvisSelect('SO2')">SO2</a></div>
 		<div class="button_cont"><a class="example_e" onclick="setInvisSelect('CH4')">CH4</a></div>
 
@@ -165,9 +164,18 @@ transition: all 0.3s ease 0s;
 </div>
 <script>
 
+function off(substance) {
+	var substances = ['NO2', 'SO2', 'CH4'];
+	substances.forEach(toggleButtons);
+	document.getElementById(substance).classList.add("active");
+}
+function toggleButtons(substance) {
+	document.getElementById(substance).classList.remove("active");
+}
+
 function setInvisSelect(value) {
 	document.getElementById('substances').value = value;
-	document.getElementById('currentDisplay').innerHTML = "Currently displayed: " + value;
+	off(value);
 	runBoth();
 
 }
