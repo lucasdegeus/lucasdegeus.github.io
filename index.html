@@ -132,8 +132,6 @@ transition: all 0.3s ease 0s;
   			<input id='slider' class='row' type='range' min='1' max='7' step='1' value='1' />
 		</div>
 
-		<label for="myCheck">Toggle lockdown data:</label> 
-		<input type="checkbox" name="tog" id="lockdownTog" checked="true" onclick="toggleLockdown()">
 
 
 <!--         <label id="substanceLable">Particle:</label>
@@ -141,6 +139,7 @@ transition: all 0.3s ease 0s;
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
 			</select> -->
+		<div class="button_cont"><a class="example_e active"  onclick="alert('toggle')">NO2</a></div>
 <div id="wrapper">
 		<div class="button_cont"><a class="example_e active" id="NO2"  onclick="setInvisSelect('NO2')">NO2</a></div>
 		<div class="button_cont"><a class="example_e" id="SO2" onclick="setInvisSelect('SO2')">SO2</a></div>
@@ -156,6 +155,7 @@ transition: all 0.3s ease 0s;
 </div> 
 
 <div style="display: none;">
+	<input type="checkbox" name="tog" id="lockdownTog" checked="true" onclick="toggleLockdown()">
     <label id="substanceLable">Particle:</label>
 		<select id="substances" onchange="runBoth()" >
   			<option value="NO2"></option>
@@ -175,7 +175,6 @@ function toggleButtons(substance) {
 }
 
 function setInvisSelect(value) {
-	alert(value)
 	document.getElementById("substances").value = value;
 	off(value);
 	runBoth();
