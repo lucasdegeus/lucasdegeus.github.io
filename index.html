@@ -96,11 +96,11 @@ transition: all 0.3s ease 0s;
 .activeC {
 color: #404040 !important;
 font-weight: 700 !important;
-/*letter-spacing: 3px;*/
+letter-spacing: 3px;
 background: none;
-/*-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);*/
-/*-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);*/
-/*transition: all 0.3s ease 0s;*/
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
 }
 </style>
 </head>
@@ -191,7 +191,6 @@ function toggleStrict() {
 		toggleLockdown()
 		return
 	}
-	document.getElementById('strictness').classList.remove("activeB");
 }
 
 function off(substance) {
