@@ -9,54 +9,14 @@
   body { margin: 0; padding: 0; }
   .map { position: absolute; top: 0; bottom: 0; width: 100%; }
    /* Split the screen in half */
-
- /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 14px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 14px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
 .slidecontainer {
   width: 100%;
-  margin-bottom: 10px;
 }
 
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 10px;
+  height: 15px;
   border-radius: 5px;
   background-color: #d3d3d3 !important;
   outline: none;
@@ -72,8 +32,8 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background: #404040;
   cursor: pointer;
@@ -109,33 +69,32 @@
 }
 
 .map-overlay {
-font: 8px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 position: absolute;
 width: auto;
 top: 0;
 left: 0;
-padding: 7px;
+padding: 10px;
 }
  
 .map-overlay .map-overlay-inner {
-width:200px;
+width:260px;
 background-color: #fff;
 box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 border-radius: 3px;
-padding: 7px;
-margin-bottom: 7px;
+padding: 10px;
+margin-bottom: 10px;
 text-align: center;
-font: 8px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
  
 .map-overlay h2 {
-line-height: 18px;
+line-height: 24px;
 display: block;
-margin: 0 0 7px;
+margin: 0 0 10px;
 }
  
 .map-overlay .legend .bar {
-height: 7px;
+height: 10px;
 width: 100%;
 background: linear-gradient(to right, #fca107, #7f3121);
 }
@@ -150,9 +109,9 @@ cursor: ew-resize;
 }
 
 .button_cont {
-	margin: 3.75px;
+	margin: 5px;
 	margin-bottom: 20px;
-	margin-top:13.50px;
+	margin-top:20px;
 	display:inline-block;
 }
 
@@ -161,7 +120,7 @@ border: none;
 background: #404040;
 color: #ffffff !important;
 font-weight: 100;
-padding: 13.50px;
+padding: 20px;
 text-transform: uppercase;
 border-radius: 6px;
 transition: all 0.3s ease 0s;
@@ -171,7 +130,7 @@ transition: all 0.3s ease 0s;
 .butC:hover,.activeC {
 color: #404040 !important;
 font-weight: 700 !important;
-letter-spacing: 2px;
+letter-spacing: 3px;
 background: none;
 -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.57);
 -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
@@ -179,76 +138,66 @@ transition: all 0.3s ease 0s;
 }
 
 .butB {
-margin-top: 13.5px;
-margin-bottom: 15px;
+margin-top: 20px;
+margin-bottom: 20px;
 border: none;
 background: #404040;
 color: #ffffff !important;
 font-weight: 100;
-padding: 13.5px;
+padding: 20px;
 text-transform: uppercase;
 border-radius: 6px;
 transition: all 0.3s ease 0s;
-letter-spacing: 2px;
+letter-spacing: 3px;
 }
 
 .activeB {
 color: #404040 !important;
 font-weight: 700 !important;
-letter-spacing: 2px;
+letter-spacing: 3px;
 background: none;
--webkit-box-shadow: 0px 0px 2.5px 0px rgba(0,0,0,0.57);
--moz-box-shadow: 0px 5px 28px -10px rgba(0,0,0,0.57);
+-webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 transition: all 0.3s ease 0s;
 }
 
 .yearLabelRight {
     background-color: #404040;
     z-index: 999;
-    width: 66.6px;
-    height: 35px;
+    width: 100px;
+    height: 50px;
     position: relative;
     text-align: center;
     color: white;
-    font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	border-bottom-right-radius: 5.5px;
+    font: 20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	border-bottom-right-radius: 8px;
 }
 
 .yearLabelLeft {
     background-color: #404040;
     z-index: 999;
-    width: 66.6px;
-    height: 35px;
+    width: 100px;
+    height: 50px;
     position: relative;
     text-align: center;
     color: white;
-    font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	border-bottom-left-radius: 5.5px;
+    font: 20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	border-bottom-left-radius: 8px;
 }
 
 .yearLabelLeft{
     background-color: #404040;
     z-index: 999;
-    width: 66.6px;
-    height: 35px;
+    width: 100px;
+    height: 50px;
     position: relative;
     text-align: center;
     color: white;
-    font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	border-bottom-left-radius: 5.5px;
+    font: 20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	border-bottom-left-radius: 8px;
 }
 
 
-
-.newTitle {
-font-weight: 100;
-text-transform: uppercase;
-transition: all 0.3s ease 0s;
-background: #404040; color:white;
-margin:0;
-padding:6.66px;
-font-size: 12px;
-}
 </style>
 </head>
 
@@ -280,29 +229,13 @@ font-size: 12px;
 
  <div class="split left">
     <div id="map2019" class=map></div>
-     <div class="yearLabelLeft" style="float:right;"><div style="margin-top:8.25px;">2019</div></div>
+     <div class="yearLabelLeft" style="float:right;"><div style="margin-top:12.5px;">2019</div></div>
     <div class="map-overlay top">
       <div class="map-overlay-inner">
-        <p class="newTitle" style="background: #404040; color:white; margin:0;  font-size:9px; padding:6.66px; font-size: 10px;">Air pollution and COVID-19</p>
-
-<!-- Trigger/Open The Modal -->
-<button id="myBtn" style="font-size: 8px !important;"  class="butB activeB">Show project description</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal" style="display: none;z-index: 1;position: absolute;">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-        	<p style="margin: 0;">An interactive map that shows differences between pollution in 2019 and 2020. To present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-  </div>
-
-</div>
-
-        </p>
+        <h2>Air pollution and COVID-19</h2>
 
  		<div class='session slidecontainer' id='sliderbar'>
-  			<div style="margin-bottom: 3.5px; font-size: 12px">Week: <label id='active-hour'>1</label></div>
+  			<h2>Week: <label id='active-hour'>1</label></h2>
   			<input id='slider' class='row slider' type='range' min='1' max='7' step='1' value='1' />
 		</div>
 
@@ -313,7 +246,6 @@ font-size: 12px;
   				<option value="weeks">Optie 1</option>
   				<option value="differentsubstanceweeks">Optie 2</option>
 			</select> -->
-
 		<div id="wrapper">
 		<div class="button_cont"><a class="butB activeB" id="strictness" onclick="toggleStrict()">Strictness data: ON</a></div><br>
 		<div class="button_cont"><a class="butC activeC" id="NO2"  onclick="setInvisSelect('NO2')">NO2</a></div>
@@ -328,7 +260,7 @@ font-size: 12px;
 
 <div class="split right">
     <div id="map" class=map></div>
-    <div class="yearLabelRight" style="float:left;"><div style="margin-top:8.25px;">2020</div></div>
+    <div class="yearLabelRight" style="float:left;"><div style="margin-top:12.5px;">2020</div></div>
 </div> 
 
 <div style="display: none;">
@@ -340,32 +272,8 @@ font-size: 12px;
   			<option value="CH4"></option>
 		</select>
 </div>
-
-<div>
-	<!-- <div style="width: 25%;float: left;margin-top: 45%;z-index: 2;position: relative;text-align:right;">hi</div> -->
-		<img id="colorbar" src="colorbars/NO2Color.jpeg" style="    position: absolute;
-    z-index: 1;
-    margin-top: 45%;
-    margin-left: 25%;
-    width: 50%;" alt="colorbar">
-<!-- 			<div style="width: 25%;float: right;margin-top: 45%;z-index: 2;position: relative;text-align: ">
-				<p style="background-color: white; display: inline;">hi</p></div> -->
-</div>
 <script>
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+
 
 
 function toggleStrict() {
@@ -397,14 +305,8 @@ function toggleButtons(substance) {
 function setInvisSelect(value) {
 	document.getElementById("substances").value = value;
 	off(value);
-	changeBar();
 	runBoth();
 
-}
-
-function changeBar() {
-  var currentSub = document.getElementById("substances").value
-  document.getElementById('colorbar').src = "colorbars/" + currentSub + "Color.jpeg";
 }
 function toggleLockdown() {
 	if (document.getElementById('lockdownTog').checked == true) {
@@ -452,7 +354,7 @@ document.getElementById('slider').value = 0;
 // data from opendata.cityofboise.org/
 map.addSource('eventscovid', {
 'type': 'geojson',
-'data': 'data/events.geojson'
+'data': '/events.geojson'
 });
 
   map.addLayer({
@@ -630,17 +532,7 @@ function substanceSwitch() {
   			continue;
   		}
       map.removeLayer('week'+i);
-      map.removeSource('week'+i);
-      if (currentSub=="CH4") {
-      	map.removeLayer('week'+i+'tile1');
-      	map.removeSource('week'+i+'tile1');
-      	map.removeLayer('week'+i+'tile2');
-      	map.removeSource('week'+i+'tile2');
-      	map.removeLayer('week'+i+'tile3');
-      	map.removeSource('week'+i+'tile3');
-      }
-
-       }
+      map.removeSource('week'+i); }
 	chunkLoader(currentSub,week);
 }
 
@@ -667,22 +559,12 @@ function chunkLoader(currentSub,currentWeek) {
   			continue;
   		}
 		if (i == currentWeek) {
-			if (currentSub == "CH4") {
-			mapCreate(currentSub+'/week'+i+"_tile1.geojson", 'week'+i+"tile1", 'visible');
-  			map.setLayoutProperty('week'+i+"tile1", 'visibility', 'visible');
-  			continue; }
 			mapCreate(currentSub+'/week'+currentWeek+".geojson", 'week'+currentWeek, 'visible');
   			map.setLayoutProperty('week'+currentWeek, 'visibility', 'visible');
   			continue;
 		}
-		if (currentSub != "CH4") {
-			mapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'none');
-		}
-		if (currentSub == "CH4") {
-			console.log("hi")
-			mapCreate(currentSub+'/week'+i+"_tile2.geojson", 'week'+i+"tile2", 'none');
-			mapCreate(currentSub+'/week'+i+"_tile3.geojson", 'week'+i+"tile3", 'none');
-		}
+		mapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'none');
+
 	}
 	map.moveLayer('eventscovid');
 }
