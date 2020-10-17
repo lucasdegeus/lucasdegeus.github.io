@@ -667,15 +667,15 @@ function chunkLoader(currentSub,currentWeek) {
   			continue;
   		}
 		if (i == currentWeek) {
-			mapCreate(currentSub+'/week'+currentWeek+".geojson", 'week'+currentWeek, 'visible');
-  			map.setLayoutProperty('week'+currentWeek, 'visibility', 'visible');
+			mapCreate(currentSub+'/week'+i+"_tile1.geojson", 'week'+i+"tile1", 'visible');
+  			map.setLayoutProperty('week'+i+"tile1", 'visibility', 'visible');
   			continue;
 		}
 		if (currentSub != "CH4") {
 			mapCreate(currentSub+'/week'+i+".geojson", 'week'+i, 'none');
 		}
 		if (currentSub == "CH4") {
-			mapCreate(currentSub+'/week'+i+"_tile1.geojson", 'week'+i+"tile1", 'none');
+			console.log("hi")
 			mapCreate(currentSub+'/week'+i+"_tile2.geojson", 'week'+i+"tile2", 'none');
 			mapCreate(currentSub+'/week'+i+"_tile3.geojson", 'week'+i+"tile3", 'none');
 		}
