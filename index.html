@@ -667,8 +667,12 @@ function chunkLoader(currentSub,currentWeek) {
   			continue;
   		}
 		if (i == currentWeek) {
+			if (currentSub == "CH4") {
 			mapCreate(currentSub+'/week'+i+"_tile1.geojson", 'week'+i+"tile1", 'visible');
   			map.setLayoutProperty('week'+i+"tile1", 'visibility', 'visible');
+  			continue; }
+			mapCreate(currentSub+'/week'+currentWeek+".geojson", 'week'+currentWeek, 'visible');
+  			map.setLayoutProperty('week'+currentWeek, 'visibility', 'visible');
   			continue;
 		}
 		if (currentSub != "CH4") {
