@@ -630,7 +630,17 @@ function substanceSwitch() {
   			continue;
   		}
       map.removeLayer('week'+i);
-      map.removeSource('week'+i); }
+      map.removeSource('week'+i);
+      if (currentSub=="CH4") {
+      	map.removeLayer('week'+i+'tile1');
+      	map.removeSource('week'+i+'tile1');
+      	map.removeLayer('week'+i+'tile2');
+      	map.removeSource('week'+i+'tile2');
+      	map.removeLayer('week'+i+'tile3');
+      	map.removeSource('week'+i+'tile3');
+      }
+
+       }
 	chunkLoader(currentSub,week);
 }
 
