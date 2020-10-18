@@ -660,6 +660,8 @@ document.getElementById('slider').addEventListener('input', function(e) {
     // 	  console.log("event ding")
   		// 	chunkLoader(currentSub,i);
   		// }
+      mapLayer = map.getLayer('week'+i+'_tile'+j)
+  	nonExist = (typeof mapLayer == 'undefined')
       if (nonExist) {
   			continue;
   		}
