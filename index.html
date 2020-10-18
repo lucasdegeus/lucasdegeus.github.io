@@ -571,7 +571,7 @@ function chunkLoader(currentSub,currentWeek) {
   if (currentSub == "CH4") {
     var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
     for (var i = currentWeek-2; i<=currentWeek+2;i++) {
-      for (var j = currentTile-1; j<=currentTile+1; j++) {
+      for (var j = 1; j< 8; j++) {
         if ( j < currentTile-1 || j > currentTile+1 ) {
           console.log('drop', i , j);
           map.removeLayer('week'+i+'_tile'+j);
