@@ -528,14 +528,14 @@ function substanceSwitch() {
   if (currentSub == "CH4") {
     for (var i = 1; i < 8; i++) {
       for (var j = 1; j < 8; j++) {
-  	mapLayer = map.getLayer('week'+i+'_tile'+j)
+  	mapLayer = map.getLayer('week'+i+'tile'+j)
   	nonExist = (typeof mapLayer == 'undefined')
   		if (nonExist) {
   			continue;
   		}
       console.log('Substance start')
-      map.removeLayer('week'+i+'_tile'+j);
-      map.removeSource('week'+i+'_tile'+j); 
+      map.removeLayer('week'+i+'tile'+j);
+      map.removeSource('week'+i+'tile'+j); 
       console.log('Substance worked')
       }}
 	chunkLoader(currentSub,week);
@@ -572,28 +572,28 @@ function chunkLoader(currentSub,currentWeek) {
     var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
     for (var i = currentWeek-2; i<=currentWeek+2;i++) {
       for (var j = 1; j< 8; j++) {
-        mapLayer = map.getLayer('week'+i+'_tile'+j)
+        mapLayer = map.getLayer('week'+i+'tile'+j)
   		  nonExist = (typeof mapLayer == 'undefined')
         if ( j < currentTile-1 || j > currentTile+1 ) {
         if (nonExist) {
   			  continue;
   		  }
           console.log('dropped', i , j);
-          map.removeLayer('week'+i+'_tile'+j);
-        map.removeSource('week'+i+'_tile'+j); 
+          map.removeLayer('week'+i+'tile'+j);
+        map.removeSource('week'+i+'tile'+j); 
         continue;
         }
-		  // mapLayer = map.getLayer('week'+i+'_tile'+j)
+		  // mapLayer = map.getLayer('week'+i+'tile'+j)
   		// nonExist = (typeof mapLayer == 'undefined')
   		if (!nonExist || i < 1 || i >= 8) {
   			continue;
   		}
 		if (i == currentWeek) {
-			mapCreate(currentSub+'/week'+i+'_tile'+j+".geojson", 'week'+i+'_tile'+j, 'visible');
-  			map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
+			mapCreate(currentSub+'/week'+i+'tile'+j+".geojson", 'week'+i+'tile'+j, 'visible');
+  			map.setLayoutProperty('week'+i+'tile'+j, 'visibility', 'visible');
   			continue;
 		}
-		mapCreate(currentSub+'/week'+i+'_tile'+j+".geojson",'week'+i+'_tile'+j, 'none'); }}
+		mapCreate(currentSub+'/week'+i+'tile'+j+".geojson",'week'+i+'tile'+j, 'none'); }}
 
 	}
 	map.moveLayer('eventscovid');
@@ -646,7 +646,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
     for (var i = 1; i < 8; i++) {
       for (var j =1; j < 8; j++) {
       // console.log(i);
-  	mapLayer = map.getLayer('week'+i+'_tile'+j)
+  	mapLayer = map.getLayer('week'+i+'tile'+j)
   	nonExist = (typeof mapLayer == 'undefined')
 
   	if (i !== week) {
@@ -655,14 +655,14 @@ document.getElementById('slider').addEventListener('input', function(e) {
   		}
       if (i < week - 2 || i > week + 2) {
         // console.log('kom hier');
-        map.removeLayer('week'+i+'_tile'+j);
-        map.removeSource('week'+i+'_tile'+j);
-        // map2019.removeLayer('week'+i+'_tile'+j);
-        // map2019.removeSource('week'+i+'_tile'+j);
+        map.removeLayer('week'+i+'tile'+j);
+        map.removeSource('week'+i+'tile'+j);
+        // map2019.removeLayer('week'+i+'tile'+j);
+        // map2019.removeSource('week'+i+'tile'+j);
       }
       else { 
-      	map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'none');
-      	// map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'none');
+      	map.setLayoutProperty('week'+i+'tile'+j, 'visibility', 'none');
+      	// map2019.setLayoutProperty('week'+i+'tile'+j, 'visibility', 'none');
          }
   	}
   	if (i == week) {
@@ -672,14 +672,14 @@ document.getElementById('slider').addEventListener('input', function(e) {
     // 	  console.log("event ding")
   		// 	chunkLoader(currentSub,i);
   		// }
-      mapLayer = map.getLayer('week'+i+'_tile'+j)
+      mapLayer = map.getLayer('week'+i+'tile'+j)
   	nonExist = (typeof mapLayer == 'undefined')
       if (nonExist) {
   			continue;
   		}
       console.log(nonExist, i, j)
-  		map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
-  		// map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
+  		map.setLayoutProperty('week'+i+'tile'+j, 'visibility', 'visible');
+  		// map2019.setLayoutProperty('week'+i+'tile'+j, 'visibility', 'visible');
   	}}}
 ///
 //
