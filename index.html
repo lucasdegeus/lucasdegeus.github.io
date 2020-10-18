@@ -533,8 +533,11 @@ function substanceSwitch() {
   		if (nonExist) {
   			continue;
   		}
+      console.log('Substance start')
       map.removeLayer('week'+i+'_tile'+j);
-      map.removeSource('week'+i+'_tile'+j); }}
+      map.removeSource('week'+i+'_tile'+j); 
+      console.log('Substance worked')
+      }}
 	chunkLoader(currentSub,week);
   return;
   }
@@ -642,12 +645,12 @@ document.getElementById('slider').addEventListener('input', function(e) {
       if (i < week - 2 || i > week + 2 || j < currentTile < -1 || j > currentTile + 1 ) {
         map.removeLayer('week'+i+'_tile'+j);
         map.removeSource('week'+i+'_tile'+j);
-        map2019.removeLayer('week'+i+'_tile'+j);
-        map2019.removeSource('week'+i+'_tile'+j);
+        // map2019.removeLayer('week'+i+'_tile'+j);
+        // map2019.removeSource('week'+i+'_tile'+j);
       }
       else { 
       	map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'none');
-      	map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'none'); }
+      	// map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'none'); }
   	}
   	if (i == week) {
   		chunkLoader(currentSub,i);
@@ -657,7 +660,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   		// 	chunkLoader(currentSub,i);
   		// }
   		map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
-  		map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
+  		// map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
   	}}}
 ///
 //
