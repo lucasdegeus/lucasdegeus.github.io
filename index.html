@@ -379,8 +379,13 @@
     document.getElementById(substance).classList.remove("activeC");
   }
 
+  function colorbarSwitch(value) {
+    document.getElementById("colorbar").src = "colorbars/" + value + "2Color.jpeg"
+  }
+
   function setInvisSelect(value) {
     document.getElementById("substances").value = value;
+
     off(value);
     runBoth();
 
@@ -499,10 +504,8 @@
         if (nonExist) {
           continue;
         }
-        console.log('Substance start')
         map.removeLayer('week' + i + 'tile' + j);
         map.removeSource('week' + i + 'tile' + j);
-        console.log('Substance worked')
       }
     }
     chunkLoader(currentSub, week);
@@ -519,10 +522,8 @@
         if (nonExist) {
           continue;
         }
-        console.log('Substance start')
         map2019.removeLayer('week' + i + 'tile' + j);
         map2019.removeSource('week' + i + 'tile' + j);
-        console.log('Substance worked')
       }
     }
     secondChunkLoader(currentSub, week);
@@ -540,7 +541,6 @@
           if (nonExist) {
             continue;
           }
-          console.log('dropped', i, j);
           map.removeLayer('week' + i + 'tile' + j);
           map.removeSource('week' + i + 'tile' + j);
           continue;
@@ -570,7 +570,6 @@
           if (nonExist) {
             continue;
           }
-          console.log('dropped', i, j);
           map2019.removeLayer('week' + i + 'tile' + j);
           map2019.removeSource('week' + i + 'tile' + j);
           continue;
@@ -617,7 +616,6 @@
           if (nonExist) {
             continue;
           }
-          console.log(nonExist, i, j)
           map.setLayoutProperty('week' + i + 'tile' + j, 'visibility', 'visible');
         }
       }
@@ -646,7 +644,6 @@
           if (nonExist) {
             continue;
           }
-          console.log(nonExist, i, j)
           map2019.setLayoutProperty('week' + i + 'tile' + j, 'visibility', 'visible');
         }
       }
