@@ -569,12 +569,12 @@ function secondSubstanceSwitch() {
 
 function chunkLoader(currentSub,currentWeek) {
   if (currentSub == "CH4") {
-    var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
+    var currentTile = Math.abs(Math.round((map.getCenter(map).lng+180)/30));
     for (var i = currentWeek-2; i<=currentWeek+2;i++) {
       for (var j = 1; j< 13; j++) {
         mapLayer = map.getLayer('week'+i+'tile'+j)
   		  nonExist = (typeof mapLayer == 'undefined')
-        if ( j < currentTile-1 || j > currentTile+1 ) {
+        if ( j < currentTile-2 || j > currentTile+2 ) {
         if (nonExist) {
   			  continue;
   		  }
@@ -641,7 +641,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   var week = parseInt(e.target.value);
   currentActive = ('week'+week);
   var currentSub = document.getElementById("substances").value;
-  var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
+  var currentTile = Math.abs(Math.round((map.getCenter(map).lng+180)/30));
   if (currentSub == "CH4") {
     for (var i = 1; i < 8; i++) {
       for (var j =1; j < 13; j++) {
@@ -700,7 +700,7 @@ return;
       // console.log(i);
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
-    var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
+    var currentTile = Math.abs(Math.round((map.getCenter(map).lng+180)/30));
 
   	if (i !== week) {
   		if (nonExist) {
@@ -767,7 +767,7 @@ function sync2019() {
 
 map2019
   .on('drag', function() {
-    console.log(Math.abs(Math.round((map.getCenter(map).lng-15+180)/30)));
+    console.log(Math.abs(Math.round((map.getCenter(map).lng+180)/30)));
     sync2020();
   })
   .on('zoomend', function() {
