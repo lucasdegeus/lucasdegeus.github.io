@@ -752,6 +752,7 @@ function sync2019() {
 
 map2019
   .on('drag', function() {
+    console.log(Math.round(map.getCenter(map).lng/30+6));
     sync2020();
   })
   .on('zoomend', function() {
