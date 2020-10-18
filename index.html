@@ -572,6 +572,11 @@ function chunkLoader(currentSub,currentWeek) {
     var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
     for (var i = currentWeek-2; i<=currentWeek+2;i++) {
       for (var j = currentTile-1; j<=currentTile+1; j++) {
+        if ( j < currentTile-1 || j > currentTile+1 ) {
+          map.removeLayer('week'+i+'_tile'+j);
+        map.removeSource('week'+i+'_tile'+j); 
+        continue;
+        }
 		  mapLayer = map.getLayer('week'+i+'_tile'+j)
   		nonExist = (typeof mapLayer == 'undefined')
   		if (!nonExist || i < 1 || i >= 8) {
@@ -582,7 +587,7 @@ function chunkLoader(currentSub,currentWeek) {
   			map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
   			continue;
 		}
-		mapCreate(currentSub+'/week'+i+'_tile'+j+".geojson",'week'+i+'_tile'+j, 'none'); }
+		mapCreate(currentSub+'/week'+i+'_tile'+j+".geojson",'week'+i+'_tile'+j, 'none'); }}
 
 	}
 	map.moveLayer('eventscovid');
