@@ -575,11 +575,11 @@ function chunkLoader(currentSub,currentWeek) {
   			continue;
   		}
 		if (i == currentWeek) {
-			mapCreate(currentSub+'week'+i+'_tile'+j+".geojson", 'week'+i+'_tile'+j, 'visible');
+			mapCreate(currentSub+'/week'+i+'_tile'+j+".geojson", 'week'+i+'_tile'+j, 'visible');
   			map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
   			continue;
 		}
-		mapCreate(currentSub+'week'+i+'_tile'+j+".geojson",'week'+i+'_tile'+j, 'none'); }
+		mapCreate(currentSub+'/week'+i+'_tile'+j+".geojson",'week'+i+'_tile'+j, 'none'); }
 
 	}
 	map.moveLayer('eventscovid');
