@@ -486,9 +486,9 @@ map.addSource('week1', {
 'data': '/data/2020/NO2/week1tile1.geojson'
 });
 map.addLayer({
-      'id': 'week1tile1',
+      'id': 'week1_tile1',
       'type': 'circle',
-      'source': 'week1tile1',
+      'source': 'week1_tile1',
       // 'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
@@ -543,14 +543,14 @@ map2019.on('load', function () {
 //     // }
 //     // 'filter': ['==', ['number', ['get', 'week']], 1]
 //   });
-map2019.addSource('week1tile1', {
+map2019.addSource('week1_tile1', {
 'type': 'geojson',
-'data': '/data/2019/NO2/week1tile1.geojson'
+'data': '/data/2019/NO2/week1_tile1.geojson'
 });
 map2019.addLayer({
-      'id': 'week1tile1',
+      'id': 'week1_tile1',
       'type': 'circle',
-      'source': 'week1tile1',
+      'source': 'week1_tile1',
       // 'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
@@ -879,7 +879,10 @@ function sync2019() {
 
 map2019
   .on('drag', function() {
-    console.log(Math.abs(Math.round((map.getCenter(map).lng+195)/30)));
+    var currentSub = document.getElementById("substances").value;
+    var week = parseInt(document.getElementById('slider').value);
+    chunkLoader(currentSub,week);
+    secondChunkLoader(currentSub,week);
     sync2020();
   })
   .on('zoomend', function() {
