@@ -483,12 +483,12 @@ map.addSource('eventscovid', {
   });
 map.addSource('week1', {
 'type': 'geojson',
-'data': '/data/2020/NO2/week1_tile1.geojson'
+'data': '/data/2020/NO2/week1tile1.geojson'
 });
 map.addLayer({
-      'id': 'week1_tile1',
+      'id': 'week1tile1',
       'type': 'circle',
-      'source': 'week1_tile1',
+      'source': 'week1tile1',
       // 'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
@@ -543,14 +543,14 @@ map2019.on('load', function () {
 //     // }
 //     // 'filter': ['==', ['number', ['get', 'week']], 1]
 //   });
-map2019.addSource('week1_tile1', {
+map2019.addSource('week1tile1', {
 'type': 'geojson',
-'data': '/data/2019/NO2/week1_tile1.geojson'
+'data': '/data/2019/NO2/week1tile1.geojson'
 });
 map2019.addLayer({
-      'id': 'week1_tile1',
+      'id': 'week1tile1',
       'type': 'circle',
-      'source': 'week1_tile1',
+      'source': 'week1tile1',
       // 'filter': ['==', ['number', ['get', 'week']], 1],
       'layout': {
          'visibility': 'visible'
