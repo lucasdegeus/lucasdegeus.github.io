@@ -523,8 +523,21 @@ map2019.addLayer({
 
 
 function substanceSwitch() {
-  var currentSub = document.getElementById("substances").value
+  var currentSub = document.getElementById("substances").value;
   var week = parseInt(document.getElementById('slider').value);
+  if (currentSub == "CH4") {
+    for (var i = 1; i < 8; i++) {
+      for (var j = 1; j < 8; j++) {
+  	mapLayer = map.getLayer('week'+i+'_tile'+j)
+  	nonExist = (typeof mapLayer == 'undefined')
+  		if (nonExist) {
+  			continue;
+  		}
+      map.removeLayer('week'+i+'_tile'+j);
+      map.removeSource('week'+i+'_tile'+j); }}
+	chunkLoader(currentSub,week);
+  return;
+  }
   for (var i = 1; i < 8; i++) {
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
@@ -552,6 +565,29 @@ function secondSubstanceSwitch() {
 
 
 function chunkLoader(currentSub,currentWeek) {
+  if (currentSub == "CH4") {
+    var currentTile = 2;
+    for (var i = currentWeek-2; i<=currentWeek+2;i++) {
+      for (var j = currentTile-1; j<=currentTile+1; j++) {
+		  mapLayer = map.getLayer('week'+i+'_tile'+j)
+  		nonExist = (typeof mapLayer == 'undefined')
+  		if (!nonExist || i < 1 || i >= 8) {
+  			continue;
+  		}
+		if (i == currentWeek) {
+			mapCreate(currentSub+'week'+i+'_tile'+j+".geojson", 'week'+i+'_tile'+j, 'visible');
+  			map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
+  			continue;
+		}
+		mapCreate(currentSub+'week'+i+'_tile'+j+".geojson",'week'+i+'_tile'+j, 'none'); }
+
+	}
+	map.moveLayer('eventscovid');
+  return;}
+
+  // 
+  // 
+  // 
 	for (var i = currentWeek-2; i<=currentWeek+2;i++) {
 		mapLayer = map.getLayer('week'+i)
   		nonExist = (typeof mapLayer == 'undefined')
@@ -591,12 +627,51 @@ document.getElementById('slider').addEventListener('input', function(e) {
   var week = parseInt(e.target.value);
   currentActive = ('week'+week);
   var currentSub = document.getElementById("substances").value
+  var currentTile = 2;
+  if (currentSub == "CH4") {
+    for (var i = 1; i < 8; i++) {
+      for (var j =1; j < 8; j++) {
+      // console.log(i);
+  	mapLayer = map.getLayer('week'+i+'_tile'+j)
+  	nonExist = (typeof mapLayer == 'undefined')
 
+  	if (i !== week) {
+  		if (nonExist) {
+  			continue;
+  		}
+      if (i < week - 2 || i > week + 2 || j < currentTile < -1 || j > currentTile + 1 ) {
+        map.removeLayer('week'+i+'_tile'+j);
+        map.removeSource('week'+i+'_tile'+j);
+        map2019.removeLayer('week'+i+'_tile'+j);
+        map2019.removeSource('week'+i+'_tile'+j);
+      }
+      else { 
+      	map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'none');
+      	map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'none'); }
+  	}
+  	if (i == week) {
+  		chunkLoader(currentSub,i);
+  		secondChunkLoader(currentSub,i);
+  		// if (nonExist) {
+    // 	  console.log("event ding")
+  		// 	chunkLoader(currentSub,i);
+  		// }
+  		map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
+  		map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
+  	}}}
+///
+//
+//
+
+
+return;
+    }
   //checken of de week al exists
   for (var i = 1; i < 8; i++) {
       // console.log(i);
   	mapLayer = map.getLayer('week'+i)
   	nonExist = (typeof mapLayer == 'undefined')
+    var currentTile = 2;
 
   	if (i !== week) {
   		if (nonExist) {
