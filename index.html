@@ -660,6 +660,9 @@ document.getElementById('slider').addEventListener('input', function(e) {
     // 	  console.log("event ding")
   		// 	chunkLoader(currentSub,i);
   		// }
+      if (nonExist) {
+  			continue;
+  		}
   		map.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
   		// map2019.setLayoutProperty('week'+i+'_tile'+j, 'visibility', 'visible');
   	}}}
