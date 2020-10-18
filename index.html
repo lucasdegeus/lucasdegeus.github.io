@@ -441,7 +441,11 @@ maxZoom: maxZoomOfMap
 });
 
 map.on('load', function () {
-document.getElementById('slider').value = 0;
+  document.getElementById('slider').value = 0;
+  var currentSub = document.getElementById("substances").value;
+  var week = parseInt(document.getElementById('slider').value);
+  chunkLoader(currentSub, week);
+  secondChunkLoader(currentSub, week);
 // data from opendata.cityofboise.org/
 map.addSource('eventscovid', {
 'type': 'geojson',
@@ -481,32 +485,32 @@ map.addSource('eventscovid', {
     // }
     // 'filter': ['==', ['number', ['get', 'week']], 1]
   });
-map.addSource('week1', {
-'type': 'geojson',
-'data': '/data/2020/NO2/week1tile1.geojson'
-});
-map.addLayer({
-      'id': 'week1_tile1',
-      'type': 'circle',
-      'source': 'week1_tile1',
-      // 'filter': ['==', ['number', ['get', 'week']], 1],
-      'layout': {
-         'visibility': 'visible'
-      },
-      'paint': {
-        'circle-radius': 5,
-        'circle-color': ['get', 'fill'],
-//         'circle-blur': 1,
-        // 'circle-opacity': 1
-      }
-   });
-	map.moveLayer('eventscovid');
-});
+// map.addSource('week1tile1', {
+// 'type': 'geojson',
+// 'data': '/data/2020/NO2/week1tile1.geojson'
+// });
+// map.addLayer({
+//       'id': 'week1tile1',
+//       'type': 'circle',
+//       'source': 'week1tile1',
+//       // 'filter': ['==', ['number', ['get', 'week']], 1],
+//       'layout': {
+//          'visibility': 'visible'
+//       },
+//       'paint': {
+//         'circle-radius': 5,
+//         'circle-color': ['get', 'fill'],
+// //         'circle-blur': 1,
+//         // 'circle-opacity': 1
+//       }
+//    });
+// 	map.moveLayer('eventscovid');
+// });
 
 
 
 
-map2019.on('load', function () {
+// map2019.on('load', function () {
 // data from opendata.cityofboise.org/
 // map2019.addSource('eventscovid', {
 // 'type': 'geojson',
@@ -543,26 +547,26 @@ map2019.on('load', function () {
 //     // }
 //     // 'filter': ['==', ['number', ['get', 'week']], 1]
 //   });
-map2019.addSource('week1_tile1', {
-'type': 'geojson',
-'data': '/data/2019/NO2/week1_tile1.geojson'
-});
-map2019.addLayer({
-      'id': 'week1_tile1',
-      'type': 'circle',
-      'source': 'week1_tile1',
-      // 'filter': ['==', ['number', ['get', 'week']], 1],
-      'layout': {
-         'visibility': 'visible'
-      },
-      'paint': {
-        'circle-radius': 5,
-        'circle-color': ['get', 'fill'],
-//         'circle-blur': 1,
-        // 'circle-opacity': 1
-      }
-   });
-});
+// map2019.addSource('week1tile1', {
+// 'type': 'geojson',
+// 'data': '/data/2019/NO2/week1tile1.geojson'
+// });
+// map2019.addLayer({
+//       'id': 'week1tile1',
+//       'type': 'circle',
+//       'source': 'week1tile1',
+//       // 'filter': ['==', ['number', ['get', 'week']], 1],
+//       'layout': {
+//          'visibility': 'visible'
+//       },
+//       'paint': {
+//         'circle-radius': 5,
+//         'circle-color': ['get', 'fill'],
+// //         'circle-blur': 1,
+//         // 'circle-opacity': 1
+//       }
+//    });
+// });
 
 
 function mapCreate(filepath, id, visibility) {
