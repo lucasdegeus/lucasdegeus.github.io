@@ -573,6 +573,7 @@ function chunkLoader(currentSub,currentWeek) {
     for (var i = currentWeek-2; i<=currentWeek+2;i++) {
       for (var j = currentTile-1; j<=currentTile+1; j++) {
         if ( j < currentTile-1 || j > currentTile+1 ) {
+          console.log('drop', i , j);
           map.removeLayer('week'+i+'_tile'+j);
         map.removeSource('week'+i+'_tile'+j); 
         continue;
