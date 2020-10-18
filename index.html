@@ -527,7 +527,7 @@ function substanceSwitch() {
   var week = parseInt(document.getElementById('slider').value);
   if (currentSub == "CH4") {
     for (var i = 1; i < 8; i++) {
-      for (var j = 1; j < 8; j++) {
+      for (var j = 1; j < 13; j++) {
   	mapLayer = map.getLayer('week'+i+'tile'+j)
   	nonExist = (typeof mapLayer == 'undefined')
   		if (nonExist) {
@@ -571,7 +571,7 @@ function chunkLoader(currentSub,currentWeek) {
   if (currentSub == "CH4") {
     var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
     for (var i = currentWeek-2; i<=currentWeek+2;i++) {
-      for (var j = 1; j< 8; j++) {
+      for (var j = 1; j< 13; j++) {
         mapLayer = map.getLayer('week'+i+'tile'+j)
   		  nonExist = (typeof mapLayer == 'undefined')
         if ( j < currentTile-1 || j > currentTile+1 ) {
@@ -644,7 +644,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   var currentTile = Math.abs(Math.round((map.getCenter(map).lng-15+180)/30));
   if (currentSub == "CH4") {
     for (var i = 1; i < 8; i++) {
-      for (var j =1; j < 8; j++) {
+      for (var j =1; j < 13; j++) {
       // console.log(i);
   	mapLayer = map.getLayer('week'+i+'tile'+j)
   	nonExist = (typeof mapLayer == 'undefined')
