@@ -574,7 +574,7 @@ function chunkLoader(currentSub,currentWeek) {
       for (var j = 1; j< 13; j++) {
         mapLayer = map.getLayer('week'+i+'tile'+j)
   		  nonExist = (typeof mapLayer == 'undefined')
-        if ( j < currentTile-2 || j > currentTile+2 ) {
+        if ( j < currentTile-1 || j > currentTile+1 ) {
         if (nonExist) {
   			  continue;
   		  }
