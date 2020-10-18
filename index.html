@@ -440,12 +440,12 @@ var map2019 = new mapboxgl.Map({
 maxZoom: maxZoomOfMap
 });
 
-map.on('load', function () {
-  document.getElementById('slider').value = 0;
-  var currentSub = document.getElementById("substances").value;
-  var week = parseInt(document.getElementById('slider').value);
-  chunkLoader(currentSub, week);
-  secondChunkLoader(currentSub, week);
+  map.on('load', function () {
+    document.getElementById('slider').value = 0;
+    var currentSub = document.getElementById("substances").value;
+    var week = parseInt(document.getElementById('slider').value);
+    chunkLoader(currentSub, week);
+    secondChunkLoader(currentSub, week);
 // data from opendata.cityofboise.org/
 map.addSource('eventscovid', {
 'type': 'geojson',
@@ -567,7 +567,7 @@ map.addSource('eventscovid', {
 //       }
 //    });
 // });
-
+  });
 
 function mapCreate(filepath, id, visibility) {
 	map.addSource(id, {
