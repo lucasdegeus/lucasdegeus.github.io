@@ -642,7 +642,7 @@ document.getElementById('slider').addEventListener('input', function(e) {
   		if (nonExist) {
   			continue;
   		}
-      if (i < week - 2 || i > week + 2 || j < currentTile < -1 || j > currentTile + 1 ) {
+      if (i < week - 2 || i > week + 2) {
         // console.log('kom hier');
         map.removeLayer('week'+i+'_tile'+j);
         map.removeSource('week'+i+'_tile'+j);
