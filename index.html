@@ -441,11 +441,11 @@ maxZoom: maxZoomOfMap
 });
 
   map.on('load', function () {
-    document.getElementById('slider').value = 0;
-    var currentSub = document.getElementById("substances").value;
-    var week = parseInt(document.getElementById('slider').value);
-    chunkLoader(currentSub, week);
-    secondChunkLoader(currentSub, week);
+    // document.getElementById('slider').value = 0;
+    // var currentSub = document.getElementById("substances").value;
+    // var week = parseInt(document.getElementById('slider').value);
+    // chunkLoader(currentSub, week);
+    // secondChunkLoader(currentSub, week);
 // data from opendata.cityofboise.org/
 map.addSource('eventscovid', {
 'type': 'geojson',
@@ -567,6 +567,11 @@ map.addSource('eventscovid', {
 //       }
 //    });
 // });
+document.getElementById('slider').value = 0;
+    var currentSub = document.getElementById("substances").value;
+    var week = parseInt(document.getElementById('slider').value);
+    chunkLoader(currentSub, week);
+    secondChunkLoader(currentSub, week);
   });
 
 function mapCreate(filepath, id, visibility) {
