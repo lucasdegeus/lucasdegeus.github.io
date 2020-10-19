@@ -339,7 +339,7 @@
   </div>
 </body>
 <script>
-  console.log('Updated 4.0');
+  console.log('Updated 5.0');
   var modal = document.getElementById("myModal");
   var btn = document.getElementById("myBtn");
   var span = document.getElementsByClassName("close")[0];
@@ -662,7 +662,7 @@ function sliderEvent(weekCheck) {
       document.getElementById('active-hour').innerText = week;
     }
   map
-    .on('drag', function () {
+    .on('move', function () {
       var currentSub = document.getElementById("substances").value;
       var week = parseInt(document.getElementById('slider').value);
       chunkLoader(currentSub, week);
@@ -688,7 +688,7 @@ function sliderEvent(weekCheck) {
   }
 
   map2019
-    .on('drag', function () {
+    .on('move', function () {
       var currentSub = document.getElementById("substances").value;
       var week = parseInt(document.getElementById('slider').value);
       chunkLoader(currentSub, week);
