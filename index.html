@@ -591,6 +591,7 @@
   document.getElementById('slider').addEventListener('input', function (e) {
     setTimeout(0.5);
     var week = parseInt(e.target.value);
+    console.log(week);
     currentActive = ('week' + week);
     var currentSub = document.getElementById("substances").value;
     var currentTile = Math.abs(Math.round((map.getCenter(map).lng + 195) / 30));
