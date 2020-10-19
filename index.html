@@ -4,6 +4,7 @@
 <title>Effect of COVID-19 on different substances</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 <style>
   body {
@@ -590,8 +591,8 @@
   }
   document.getElementById('slider').addEventListener('input', function (e) {
     var weekCheck = parseInt(e.target.value);
-    console.log(weekCheck);
-    setTimeout(sliderEvent(weekCheck), 1000); });
+    document.getElementById('active-hour').innerText = weekCheck;
+    setTimeout(sliderEvent, 300, weekCheck); });
 
 function sliderEvent(weekCheck) {
       var week = parseInt(document.getElementById('slider').value);
@@ -659,10 +660,9 @@ function sliderEvent(weekCheck) {
         }
       }
       map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
-      document.getElementById('active-hour').innerText = week;
     }
   map
-    .on('move', function () {
+    .on('drag', function () {
       var currentSub = document.getElementById("substances").value;
       var week = parseInt(document.getElementById('slider').value);
       chunkLoader(currentSub, week);
@@ -688,7 +688,7 @@ function sliderEvent(weekCheck) {
   }
 
   map2019
-    .on('move', function () {
+    .on('drag', function () {
       var currentSub = document.getElementById("substances").value;
       var week = parseInt(document.getElementById('slider').value);
       chunkLoader(currentSub, week);
