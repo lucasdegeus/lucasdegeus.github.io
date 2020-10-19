@@ -415,6 +415,7 @@
     minZoom: 3,
     maxZoom: maxZoomOfMap
   });
+  map['keyboard'].disable();
 
   mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
   var map2019 = new mapboxgl.Map({
@@ -424,6 +425,7 @@
     minZoom: 3,
     maxZoom: maxZoomOfMap
   });
+  map2019['keyboard'].disable();
 
   map.on('load', function () {
     map.addSource('eventscovid', {
