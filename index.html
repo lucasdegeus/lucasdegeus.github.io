@@ -589,8 +589,12 @@
     return;
   }
   document.getElementById('slider').addEventListener('input', function (e) {
+    var weekCheck = parseInt(e.target.value);
     setTimeout(0.5);
     var week = parseInt(e.target.value);
+    if (weekCheck != week) {
+      return;
+    }
     console.log(week);
     currentActive = ('week' + week);
     var currentSub = document.getElementById("substances").value;
