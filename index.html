@@ -591,74 +591,76 @@
   document.getElementById('slider').addEventListener('input', function (e) {
     var weekCheck = parseInt(e.target.value);
     console.log(weekCheck);
-    setTimeout(1000);
-    var week = parseInt(e.target.value);
-    if (weekCheck != week) {
-      return;
-    }
-    console.log(week);
-    currentActive = ('week' + week);
-    var currentSub = document.getElementById("substances").value;
-    var currentTile = Math.abs(Math.round((map.getCenter(map).lng + 195) / 30));
-    for (var i = 1; i < 25; i++) {
-      for (var j = 1; j < 13; j++) {
-        mapLayer = map.getLayer(i+'_'+j)
-        nonExist = (typeof mapLayer == 'undefined')
+    setTimeout(sliderEvent(weekCheck), 1000); });
 
-        if (i !== week) {
-          if (nonExist) {
-            continue;
-          }
-          if (i < week - 2 || i > week + 2) {
-            map.removeLayer(i+'_'+j);
-            map.removeSource(i+'_'+j);
-          }
-          else {
-            map.setLayoutProperty(i+'_'+j, 'visibility', 'none');
-          }
-        }
-        if (i == week) {
-          chunkLoader(currentSub, i);
-          mapLayer = map.getLayer(i+'_'+j)
+function sliderEvent(weekCheck) {
+      var week = parseInt(document.getElementById('slider').value);
+      if (weekCheck != week) {
+        return;
+      }
+      console.log(week);
+      currentActive = ('week' + week);
+      var currentSub = document.getElementById("substances").value;
+      var currentTile = Math.abs(Math.round((map.getCenter(map).lng + 195) / 30));
+      for (var i = 1; i < 25; i++) {
+        for (var j = 1; j < 13; j++) {
+          mapLayer = map.getLayer(i + '_' + j)
           nonExist = (typeof mapLayer == 'undefined')
-          if (nonExist) {
-            continue;
+
+          if (i !== week) {
+            if (nonExist) {
+              continue;
+            }
+            if (i < week - 2 || i > week + 2) {
+              map.removeLayer(i + '_' + j);
+              map.removeSource(i + '_' + j);
+            }
+            else {
+              map.setLayoutProperty(i + '_' + j, 'visibility', 'none');
+            }
           }
-          map.setLayoutProperty(i+'_'+j, 'visibility', 'visible');
+          if (i == week) {
+            chunkLoader(currentSub, i);
+            mapLayer = map.getLayer(i + '_' + j)
+            nonExist = (typeof mapLayer == 'undefined')
+            if (nonExist) {
+              continue;
+            }
+            map.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
+          }
         }
       }
-    }
-    for (var i = 1; i < 25; i++) {
-      for (var j = 1; j < 13; j++) {
-        mapLayer = map2019.getLayer(i+'_'+j)
-        nonExist = (typeof mapLayer == 'undefined')
-
-        if (i !== week) {
-          if (nonExist) {
-            continue;
-          }
-          if (i < week - 2 || i > week + 2) {
-            map2019.removeLayer(i+'_'+j);
-            map2019.removeSource(i+'_'+j);
-          }
-          else {
-            map2019.setLayoutProperty(i+'_'+j, 'visibility', 'none');
-          }
-        }
-        if (i == week) {
-          secondChunkLoader(currentSub, i);
-          mapLayer = map2019.getLayer(i+'_'+j)
+      for (var i = 1; i < 25; i++) {
+        for (var j = 1; j < 13; j++) {
+          mapLayer = map2019.getLayer(i + '_' + j)
           nonExist = (typeof mapLayer == 'undefined')
-          if (nonExist) {
-            continue;
+
+          if (i !== week) {
+            if (nonExist) {
+              continue;
+            }
+            if (i < week - 2 || i > week + 2) {
+              map2019.removeLayer(i + '_' + j);
+              map2019.removeSource(i + '_' + j);
+            }
+            else {
+              map2019.setLayoutProperty(i + '_' + j, 'visibility', 'none');
+            }
           }
-          map2019.setLayoutProperty(i+'_'+j, 'visibility', 'visible');
+          if (i == week) {
+            secondChunkLoader(currentSub, i);
+            mapLayer = map2019.getLayer(i + '_' + j)
+            nonExist = (typeof mapLayer == 'undefined')
+            if (nonExist) {
+              continue;
+            }
+            map2019.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
+          }
         }
       }
+      map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
+      document.getElementById('active-hour').innerText = week;
     }
-    map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
-    document.getElementById('active-hour').innerText = week;
-  });
   map
     .on('drag', function () {
       var currentSub = document.getElementById("substances").value;
