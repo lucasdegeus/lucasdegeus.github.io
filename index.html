@@ -558,7 +558,8 @@
         mapCreate(currentSub + '/'+i+'_'+j + ".geojson", i+'_'+j, 'none');
       }
     }
-    map.moveLayer('eventscovid');
+    if (typeof map.getLayer('eventscovid') != "undefined") {
+    map.moveLayer('eventscovid'); }
     return;
   }
 
