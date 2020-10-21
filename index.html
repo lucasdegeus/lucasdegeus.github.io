@@ -678,6 +678,16 @@
         secondMapCreate(currentSub + '/'+i+'_'+j + ".geojson", i+'_'+j, 'none');
       }
     }
+    map2019.moveLayer('water'); 
+    map2019.moveLayer('waterway'); 
+    map2019.moveLayer('admin-0-boundary-bg'); 
+    map2019.moveLayer('admin-0-boundary'); 
+    map2019.moveLayer('admin-0-boundary-disputed'); 
+    // map.moveLayer('settlement-major-label'); 
+    // map.moveLayer('settlement-minor-label'); 
+    // map.moveLayer('state-label'); 
+    // map.moveLayer('country-label'); 
+    map2019.moveLayer('eventscovid'); 
     return;
   }
   document.getElementById('slider').addEventListener('input', function (e) {
