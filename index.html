@@ -306,9 +306,8 @@
               ON</a></div><br>
           <div class="button_cont"><a class="butC activeC" id="NO2" onclick="setInvisSelect('NO2')">NO2 Tropo</a></div>
           <div class="button_cont"><a class="butC" id="NO2_STRAT" onclick="setInvisSelect('NO2_STRAT')">NO2 Strato</a></div>
-          <div class="button_cont"><a class="butC" id="CO" onclick="setInvisSelect('CO')">CO</a></div>
-          <div class="button_cont"><a class="butC" id="SO2" onclick="setInvisSelect('SO2')">SO2</a></div>
-          <div class="button_cont"><a class="butC" id="CH4" onclick="setInvisSelect('CH4')">CH4</a></div>
+          <div class="button_cont"><a class="butC" id="SO2" onclick="setInvisSelect('SO2')">SO2 TOTAL</a></div>
+          <div class="button_cont"><a class="butC" id="CH4" onclick="setInvisSelect('CH4')">CH4 MIXING</a></div>
 
 
         </div>
@@ -331,12 +330,11 @@
       <option value="NO2_STRAT"></option>
       <option value="SO2"></option>
       <option value="CH4"></option>
-      <option value="CO"></option>
     </select>
   </div>
 
   <div>
-    <img id="colorbar" src="colorbars/NO2Color.jpeg" style="    position: absolute;
+    <img id="colorbar" src="colorbars/NO2Color.png" style="    position: absolute;
     z-index: 1;
     margin-top: 45%;
     margin-left: 25%;
@@ -448,7 +446,7 @@
   }
 
   function off(substance) {
-    var substances = ['NO2', 'SO2', 'CH4', "NO2_STRAT", "CO"];
+    var substances = ['NO2', 'SO2', 'CH4', "NO2_STRAT"];
     substances.forEach(toggleButtons);
     document.getElementById(substance).classList.add("activeC");
   }
@@ -457,7 +455,7 @@
   }
 
   function colorbarSwitch(value) {
-    document.getElementById("colorbar").src = "colorbars/" + value + "Color.jpeg"
+    document.getElementById("colorbar").src = "colorbars/" + value + "Color.png"
   }
 
   function setInvisSelect(value) {
@@ -485,7 +483,7 @@
   mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNkZWdldXMiLCJhIjoiY2tnMjQwdDZzMDFlMDJwbTJkcXB1ZWp2cSJ9.DEa03DkTf6rOxdA5MNVKyQ';
   var map = new mapboxgl.Map({
     container: 'map', // container element id
-    style: 'mapbox://styles/mapbox/light-v10',
+    style: 'mapbox://style/lucasdegeus/ckgjkvh5a03lx19lsjdd9ss51',
     center: centerOfMap, // initial map center in [lon, lat]
     minZoom: 4,
     maxZoom: maxZoomOfMap
@@ -636,7 +634,22 @@
       }
     }
     if (typeof map.getLayer('eventscovid') != "undefined") {
-    map.moveLayer('eventscovid'); }
+
+    map.moveLayer('water'); 
+    map.moveLayer('waterway'); 
+    map.moveLayer('admin-0-boundary-bg'); 
+    map.moveLayer('admin-0-boundary'); 
+    map.moveLayer('admin-0-boundary-disputed'); 
+    map.moveLayer('settlement-major-label'); 
+    map.moveLayer('settlement-minor-label'); 
+    map.moveLayer('state-label'); 
+    map.moveLayer('country-label'); 
+    map.moveLayer('eventscovid'); 
+    }
+
+    // map.moveLayer('land'); 
+
+
     return;
   }
 
