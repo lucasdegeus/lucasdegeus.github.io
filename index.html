@@ -328,8 +328,10 @@
     <label id="substanceLable">Particle:</label>
     <select id="substances" onchange="runBoth()">
       <option value="NO2"></option>
+      <option value="NO2_STRAT"></option>
       <option value="SO2"></option>
       <option value="CH4"></option>
+      <option value="CO"></option>
     </select>
   </div>
 
@@ -442,7 +444,7 @@
       document.getElementById('strictness').innerHTML = 'Strictness data: ON';
       toggleLockdown()
       return
-    }
+    } 
   }
 
   function off(substance) {
