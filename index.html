@@ -305,7 +305,7 @@
           <div class="button_cont"><a class="butB activeB" id="strictness" onclick="toggleStrict()">Strictness data:
               ON</a></div><br>
           <div class="button_cont"><a class="butC activeC" id="NO2" onclick="setInvisSelect('NO2')">NO2 Tropo</a></div>
-          <div class="button_cont"><a class="butC" id="NO2_STRATO" onclick="setInvisSelect('NO2_STRATO')">NO2 Strato</a></div>
+          <div class="button_cont"><a class="butC" id="NO2_STRAT" onclick="setInvisSelect('NO2_STRAT')">NO2 Strato</a></div>
           <div class="button_cont"><a class="butC" id="CO" onclick="setInvisSelect('CO')">CO</a></div>
           <div class="button_cont"><a class="butC" id="SO2" onclick="setInvisSelect('SO2')">SO2</a></div>
           <div class="button_cont"><a class="butC" id="CH4" onclick="setInvisSelect('CH4')">CH4</a></div>
@@ -446,7 +446,7 @@
   }
 
   function off(substance) {
-    var substances = ['NO2', 'SO2', 'CH4', "NO2_STRATO", "CO"];
+    var substances = ['NO2', 'SO2', 'CH4', "NO2_STRAT", "CO"];
     substances.forEach(toggleButtons);
     document.getElementById(substance).classList.add("activeC");
   }
