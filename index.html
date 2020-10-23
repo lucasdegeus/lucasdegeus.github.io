@@ -1,274 +1,280 @@
 <!DOCTYPE html>
+
 <head>
-<meta charset='utf-8' />
-<title>Effect of COVID-19 on different substances</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-  }
+  <meta charset='utf-8' />
+  <title>Effect of COVID-19 on different substances</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-  .map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
+    .map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
 
-  .modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 14px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-  }
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 14px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
 
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 14px;
-    border: 1px solid #888;
-    width: 80%;
-  }
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 14px;
+      border: 1px solid #888;
+      width: 60%;
+      margin-top: 100px;
+    }
 
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 20px;
-    font-weight: bold;
-  }
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 20px;
+      font-weight: bold;
+    }
 
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-  .slidecontainer {
-    width: 100%;
-    margin-bottom: 10px;
-  }
+    .slidecontainer {
+      width: 100%;
+      margin-bottom: 10px;
+    }
 
-  .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 10px;
-    border-radius: 5px;
-    background-color: #d3d3d3 !important;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #d3d3d3 !important;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
 
-  .slider:hover {
-    opacity: 1;
-  }
+    .slider:hover {
+      opacity: 1;
+    }
 
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #404040;
-    cursor: pointer;
-  }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #404040;
+      cursor: pointer;
+    }
 
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #404040;
-    cursor: pointer;
-  }
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #404040;
+      cursor: pointer;
+    }
 
-  #slider {
-    width: 80%;
-  }
+    #slider {
+      width: 80%;
+    }
 
-  .split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-  }
+    .split {
+      height: 100%;
+      width: 50%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+    }
 
-  .left {
-    left: 0;
-  }
+    .left {
+      left: 0;
+    }
 
-  .right {
-    right: 0;
-  }
+    .right {
+      right: 0;
+    }
 
-  .map-overlay {
-    font: 8px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    position: absolute;
-    width: auto;
-    top: 0;
-    left: 0;
-    padding: 7px;
-  }
+    .map-overlay {
+      font: 8px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      position: absolute;
+      width: auto;
+      top: 0;
+      left: 0;
+      padding: 7px;
+    }
 
-  .map-overlay .map-overlay-inner {
-    width: 210px;
-    background-color: #fff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-    padding: 7px;
-    margin-bottom: 7px;
-    text-align: center;
-    font: 8px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  }
+    .map-overlay .map-overlay-inner {
+      width: 210px;
+      background-color: #fff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      padding: 7px;
+      margin-bottom: 7px;
+      text-align: center;
+      font: 8px/14px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
 
-  .map-overlay h2 {
-    line-height: 18px;
-    display: block;
-    margin: 0 0 7px;
-  }
+    .map-overlay h2 {
+      line-height: 18px;
+      display: block;
+      margin: 0 0 7px;
+    }
 
-  .map-overlay .legend .bar {
-    height: 7px;
-    width: 100%;
-    background: linear-gradient(to right, #fca107, #7f3121);
-  }
+    .map-overlay .legend .bar {
+      height: 7px;
+      width: 100%;
+      background: linear-gradient(to right, #fca107, #7f3121);
+    }
 
-  .map-overlay input {
-    background-color: transparent;
-    display: inline-block;
-    width: 100%;
-    position: relative;
-    margin: 0;
-    cursor: ew-resize;
-  }
+    .map-overlay input {
+      background-color: transparent;
+      display: inline-block;
+      width: 100%;
+      position: relative;
+      margin: 0;
+      cursor: ew-resize;
+    }
 
-  .button_cont {
-    margin: 3.75px;
-    margin-bottom: 20px;
-    margin-top: 13.50px;
-    display: inline-block;
-  }
+    .button_cont {
+      margin: 3.75px;
+      margin-bottom: 20px;
+      margin-top: 13.50px;
+      display: inline-block;
+    }
 
-  .butC {
-    border: none;
-    background: #404040;
-    color: #ffffff !important;
-    font-weight: 100;
-    padding: 13.50px;
-    text-transform: uppercase;
-    border-radius: 6px;
-    transition: all 0.3s ease 0s;
-  }
-
-
-  .butC:hover,
-  .activeC {
-    color: #404040 !important;
-    font-weight: 700 !important;
-    letter-spacing: 2px;
-    background: none;
-    -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.57);
-    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-    transition: all 0.3s ease 0s;
-  }
-
-  .butB {
-    margin-top: 13.5px;
-    margin-bottom: 15px;
-    border: none;
-    background: #404040;
-    color: #ffffff !important;
-    font-weight: 100;
-    padding: 13.5px;
-    text-transform: uppercase;
-    border-radius: 6px;
-    transition: all 0.3s ease 0s;
-    letter-spacing: 2px;
-  }
-
-  .activeB {
-    color: #404040 !important;
-    font-weight: 700 !important;
-    letter-spacing: 2px;
-    background: none;
-    -webkit-box-shadow: 0px 0px 2.5px 0px rgba(0, 0, 0, 0.57);
-    -moz-box-shadow: 0px 5px 28px -10px rgba(0, 0, 0, 0.57);
-    transition: all 0.3s ease 0s;
-  }
-
-  .yearLabelRight {
-    background-color: #404040;
-    z-index: 999;
-    width: 66.6px;
-    height: 35px;
-    position: relative;
-    text-align: center;
-    color: white;
-    font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    border-bottom-right-radius: 5.5px;
-  }
-
-  .yearLabelLeft {
-    background-color: #404040;
-    z-index: 999;
-    width: 66.6px;
-    height: 35px;
-    position: relative;
-    text-align: center;
-    color: white;
-    font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    border-bottom-left-radius: 5.5px;
-  }
-
-  .yearLabelLeft {
-    background-color: #404040;
-    z-index: 999;
-    width: 66.6px;
-    height: 35px;
-    position: relative;
-    text-align: center;
-    color: white;
-    font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    border-bottom-left-radius: 5.5px;
-  }
+    .butC {
+      border: none;
+      background: #404040;
+      color: #ffffff !important;
+      font-weight: 100;
+      padding: 13.50px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      transition: all 0.3s ease 0s;
+    }
 
 
+    .butC:hover,
+    .activeC {
+      color: #404040 !important;
+      font-weight: 700 !important;
+      letter-spacing: 2px;
+      background: none;
+      -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.57);
+      -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+      transition: all 0.3s ease 0s;
+    }
 
-  .newTitle {
-    font-weight: 100;
-    text-transform: uppercase;
-    transition: all 0.3s ease 0s;
-    background: #404040;
-    color: white;
-    margin: 0;
-    padding: 6.66px;
-    font-size: 12px;
-  }
-</style>
+    .butB {
+      margin-top: 13.5px;
+      margin-bottom: 15px;
+      border: none;
+      background: #404040;
+      color: #ffffff !important;
+      font-weight: 100;
+      padding: 13.5px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      transition: all 0.3s ease 0s;
+      letter-spacing: 2px;
+    }
+
+    .activeB {
+      color: #404040 !important;
+      font-weight: 700 !important;
+      letter-spacing: 2px;
+      background: none;
+      -webkit-box-shadow: 0px 0px 2.5px 0px rgba(0, 0, 0, 0.57);
+      -moz-box-shadow: 0px 5px 28px -10px rgba(0, 0, 0, 0.57);
+      transition: all 0.3s ease 0s;
+    }
+
+    .yearLabelRight {
+      background-color: #404040;
+      z-index: 999;
+      width: 66.6px;
+      height: 35px;
+      position: relative;
+      text-align: center;
+      color: white;
+      font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      border-bottom-right-radius: 5.5px;
+    }
+
+    .yearLabelLeft {
+      background-color: #404040;
+      z-index: 999;
+      width: 66.6px;
+      height: 35px;
+      position: relative;
+      text-align: center;
+      color: white;
+      font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      border-bottom-left-radius: 5.5px;
+    }
+
+    .yearLabelLeft {
+      background-color: #404040;
+      z-index: 999;
+      width: 66.6px;
+      height: 35px;
+      position: relative;
+      text-align: center;
+      color: white;
+      font: 13.5px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      border-bottom-left-radius: 5.5px;
+    }
+
+
+
+    .newTitle {
+      font-weight: 100;
+      text-transform: uppercase;
+      transition: all 0.3s ease 0s;
+      background: #404040;
+      color: white;
+      margin: 0;
+      padding: 6.66px;
+      font-size: 12px;
+    }
+    .keepblue {
+      color: blue;
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="split left">
@@ -283,16 +289,6 @@
           pollution and COVID-19</p>
 
         <button id="myBtn" style="font-size: 8px !important;" class="butB activeB">Show project description</button>
-        <!-- <div id="myModal" class="modal" style="display: none;z-index: 1;position: absolute;">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p style="margin: 0;">An interactive map that shows differences between pollution in 2019 and 2020. To
-              present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-              represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-          </div>
-
-        </div> -->
-
         </p>
 
         <div class='session slidecontainer' id='sliderbar'>
@@ -305,7 +301,8 @@
           <div class="button_cont"><a class="butB activeB" id="strictness" onclick="toggleStrict()">Strictness data:
               ON</a></div><br>
           <div class="button_cont"><a class="butC activeC" id="NO2" onclick="setInvisSelect('NO2')">NO2 Tropo</a></div>
-          <div class="button_cont"><a class="butC" id="NO2_STRAT" onclick="setInvisSelect('NO2_STRAT')">NO2 Strato</a></div>
+          <div class="button_cont"><a class="butC" id="NO2_STRAT" onclick="setInvisSelect('NO2_STRAT')">NO2 Strato</a>
+          </div>
           <div class="button_cont"><a class="butC" id="SO2" onclick="setInvisSelect('SO2')">SO2</a></div>
           <div class="button_cont"><a class="butC" id="CH4" onclick="setInvisSelect('CH4')">CH4</a></div>
           <div class="button_cont"><a class="butC" id="CO" onclick="setInvisSelect('CO')">CO</a></div>
@@ -345,71 +342,30 @@
   <div id="myModal" class="modal" style="display: none;z-index: 1;position: absolute;">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p style="margin: 0;">An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
+      <div>
+        <p style="margin: 50px; width: 40%; display:inline-block">This project was carried out for the course Large
+          Scale Data Engineering given at the <a class="keepblue" href="https://www.vu.nl/">VU Amsterdam</a>.<br><br>
+          This project visualises air pollution before and during COVID-19 in relation to measures taken by countries.
+          The data about the substances is retrieved from a TROPOspheric Monitoring Instrument (TROPOMI) which is a
+          spectrometer that senses UV, VIS, NIR and SWIR to monitor NO2, SO2, CH4 and CO among other substances. The
+          instrument is mounted to a polar orbiting satellite that is managed in The Netherlands by SRON and KNMI. More
+          information can be found at the official website of <a class="keepblue" href="http://www.tropomi.eu/">TROPOMI</a>.
+          The country codes and numbers that can be seen on the map represent the strictness of the "lockdown" countries
+          are in at that moment. The number ranges from 0 (no lockdown) to 100 (strict lockdown) and is provided by the
+          University of Oxford and Blavatnik School of Government. The latest dataset can be downloaded <a
+            class="keepblue" href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/data/OxCGRT_latest.csv">here</a>.
+          To map the strictness number to the right country (coordinates) a dataset from <a
+            class="keepblue" href="https://developers.google.com/public-data/docs/canonical/countries_csv">Google</a> was used.
 
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-
-
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        An interactive map that shows differences between pollution in 2019 and 2020. To
-        present the COVID-status of countries, a dataset from Oxford is used, showing a number between 0-100 that
-        represents the strictness of the lockdown (0: no lockdown, 100: strict lockdown).
-        
+        </p>
+        <p style="margin: 50px; width: 40%; display:inline-block; float:right">Download paper: <a class="keepblue" href="paper.pdf" download>PDF</a><br>
+          Contact: <br>
+          k.doekemeijer@student.vu.nl<br>
+          lj.de.geus@student.vu.nl<br>
+          t.pelle@student.vu.nl <br><br><br><br>
+          Published: 23-10-2020
+        </p>
+      </div>
     </div>
 
   </div>
@@ -444,7 +400,7 @@
       document.getElementById('strictness').innerHTML = 'Strictness data: ON';
       toggleLockdown()
       return
-    } 
+    }
   }
 
   function off(substance) {
@@ -578,13 +534,13 @@
     var week = parseInt(document.getElementById('slider').value);
     for (var i = 1; i < 25; i++) {
       for (var j = 1; j < 13; j++) {
-        mapLayer = map.getLayer(i+'_'+j)
+        mapLayer = map.getLayer(i + '_' + j)
         nonExist = (typeof mapLayer == 'undefined')
         if (nonExist) {
           continue;
         }
-        map.removeLayer(i+'_'+j);
-        map.removeSource(i+'_'+j);
+        map.removeLayer(i + '_' + j);
+        map.removeSource(i + '_' + j);
       }
     }
     chunkLoader(currentSub, week);
@@ -596,13 +552,13 @@
     var week = parseInt(document.getElementById('slider').value);
     for (var i = 1; i < 25; i++) {
       for (var j = 1; j < 13; j++) {
-        mapLayer = map2019.getLayer(i+'_'+j)
+        mapLayer = map2019.getLayer(i + '_' + j)
         nonExist = (typeof mapLayer == 'undefined')
         if (nonExist) {
           continue;
         }
-        map2019.removeLayer(i+'_'+j);
-        map2019.removeSource(i+'_'+j);
+        map2019.removeLayer(i + '_' + j);
+        map2019.removeSource(i + '_' + j);
       }
     }
     secondChunkLoader(currentSub, week);
@@ -614,39 +570,39 @@
     var currentTile = Math.abs(Math.round((map.getCenter(map).lng + 195) / 30));
     for (var i = currentWeek - 2; i <= currentWeek + 2; i++) {
       for (var j = 1; j < 13; j++) {
-        mapLayer = map.getLayer(i+'_'+j)
+        mapLayer = map.getLayer(i + '_' + j)
         nonExist = (typeof mapLayer == 'undefined')
         if (j < currentTile - 1 || j > currentTile + 1) {
           if (nonExist) {
             continue;
           }
-          map.removeLayer(i+'_'+j);
-          map.removeSource(i+'_'+j);
+          map.removeLayer(i + '_' + j);
+          map.removeSource(i + '_' + j);
           continue;
         }
         if (!nonExist || i < 1 || i >= 25) {
           continue;
         }
         if (i == currentWeek) {
-          mapCreate(currentSub + '/'+i+'_'+j + ".geojson", i+'_'+j, 'visible');
-          map.setLayoutProperty(i+'_'+j, 'visibility', 'visible');
+          mapCreate(currentSub + '/' + i + '_' + j + ".geojson", i + '_' + j, 'visible');
+          map.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
           continue;
         }
-        mapCreate(currentSub + '/'+i+'_'+j + ".geojson", i+'_'+j, 'none');
+        mapCreate(currentSub + '/' + i + '_' + j + ".geojson", i + '_' + j, 'none');
       }
     }
     if (typeof map.getLayer('eventscovid') != "undefined") {
 
-    // map.moveLayer('water'); 
-    // map.moveLayer('waterway'); 
-    map.moveLayer('admin-0-boundary-bg'); 
-    map.moveLayer('admin-0-boundary'); 
-    map.moveLayer('admin-0-boundary-disputed'); 
-    // map.moveLayer('settlement-major-label'); 
-    // map.moveLayer('settlement-minor-label'); 
-    // map.moveLayer('state-label'); 
-    // map.moveLayer('country-label'); 
-    map.moveLayer('eventscovid'); 
+      // map.moveLayer('water'); 
+      // map.moveLayer('waterway'); 
+      map.moveLayer('admin-0-boundary-bg');
+      map.moveLayer('admin-0-boundary');
+      map.moveLayer('admin-0-boundary-disputed');
+      // map.moveLayer('settlement-major-label'); 
+      // map.moveLayer('settlement-minor-label'); 
+      // map.moveLayer('state-label'); 
+      // map.moveLayer('country-label'); 
+      map.moveLayer('eventscovid');
     }
 
     // map.moveLayer('land'); 
@@ -659,111 +615,112 @@
     var currentTile = Math.abs(Math.round((map.getCenter(map).lng + 195) / 30));
     for (var i = currentWeek - 2; i <= currentWeek + 2; i++) {
       for (var j = 1; j < 13; j++) {
-        mapLayer = map2019.getLayer(i+'_'+j)
+        mapLayer = map2019.getLayer(i + '_' + j)
         nonExist = (typeof mapLayer == 'undefined')
         if (j < currentTile - 1 || j > currentTile + 1) {
           if (nonExist) {
             continue;
           }
-          map2019.removeLayer(i+'_'+j);
-          map2019.removeSource(i+'_'+j);
+          map2019.removeLayer(i + '_' + j);
+          map2019.removeSource(i + '_' + j);
           continue;
         }
         if (!nonExist || i < 1 || i >= 25) {
           continue;
         }
         if (i == currentWeek) {
-          secondMapCreate(currentSub + '/'+i+'_'+j + ".geojson", i+'_'+j, 'visible');
-          map2019.setLayoutProperty(i+'_'+j, 'visibility', 'visible');
+          secondMapCreate(currentSub + '/' + i + '_' + j + ".geojson", i + '_' + j, 'visible');
+          map2019.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
           continue;
         }
-        secondMapCreate(currentSub + '/'+i+'_'+j + ".geojson", i+'_'+j, 'none');
+        secondMapCreate(currentSub + '/' + i + '_' + j + ".geojson", i + '_' + j, 'none');
       }
     }
     // map2019.moveLayer('water'); 
     // map2019.moveLayer('waterway'); 
-    map2019.moveLayer('admin-0-boundary-bg'); 
-    map2019.moveLayer('admin-0-boundary'); 
-    map2019.moveLayer('admin-0-boundary-disputed'); 
+    map2019.moveLayer('admin-0-boundary-bg');
+    map2019.moveLayer('admin-0-boundary');
+    map2019.moveLayer('admin-0-boundary-disputed');
     // map.moveLayer('settlement-major-label'); 
     // map.moveLayer('settlement-minor-label'); 
     // map.moveLayer('state-label'); 
     // map.moveLayer('country-label'); 
-    map2019.moveLayer('eventscovid'); 
+    map2019.moveLayer('eventscovid');
     return;
   }
   document.getElementById('slider').addEventListener('input', function (e) {
     var weekCheck = parseInt(e.target.value);
     document.getElementById('active-hour').innerText = weekCheck;
-    setTimeout(sliderEvent, 300, weekCheck); });
+    setTimeout(sliderEvent, 300, weekCheck);
+  });
 
-function sliderEvent(weekCheck) {
-      var week = parseInt(document.getElementById('slider').value);
-      if (weekCheck != week) {
-        return;
-      }
-      console.log(week);
-      currentActive = ('week' + week);
-      var currentSub = document.getElementById("substances").value;
-      var currentTile = Math.abs(Math.round((map.getCenter(map).lng + 195) / 30));
-      for (var i = 1; i < 25; i++) {
-        for (var j = 1; j < 13; j++) {
+  function sliderEvent(weekCheck) {
+    var week = parseInt(document.getElementById('slider').value);
+    if (weekCheck != week) {
+      return;
+    }
+    console.log(week);
+    currentActive = ('week' + week);
+    var currentSub = document.getElementById("substances").value;
+    var currentTile = Math.abs(Math.round((map.getCenter(map).lng + 195) / 30));
+    for (var i = 1; i < 25; i++) {
+      for (var j = 1; j < 13; j++) {
+        mapLayer = map.getLayer(i + '_' + j)
+        nonExist = (typeof mapLayer == 'undefined')
+
+        if (i !== week) {
+          if (nonExist) {
+            continue;
+          }
+          if (i < week - 2 || i > week + 2) {
+            map.removeLayer(i + '_' + j);
+            map.removeSource(i + '_' + j);
+          }
+          else {
+            map.setLayoutProperty(i + '_' + j, 'visibility', 'none');
+          }
+        }
+        if (i == week) {
+          chunkLoader(currentSub, i);
           mapLayer = map.getLayer(i + '_' + j)
           nonExist = (typeof mapLayer == 'undefined')
-
-          if (i !== week) {
-            if (nonExist) {
-              continue;
-            }
-            if (i < week - 2 || i > week + 2) {
-              map.removeLayer(i + '_' + j);
-              map.removeSource(i + '_' + j);
-            }
-            else {
-              map.setLayoutProperty(i + '_' + j, 'visibility', 'none');
-            }
+          if (nonExist) {
+            continue;
           }
-          if (i == week) {
-            chunkLoader(currentSub, i);
-            mapLayer = map.getLayer(i + '_' + j)
-            nonExist = (typeof mapLayer == 'undefined')
-            if (nonExist) {
-              continue;
-            }
-            map.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
-          }
+          map.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
         }
       }
-      for (var i = 1; i < 25; i++) {
-        for (var j = 1; j < 13; j++) {
+    }
+    for (var i = 1; i < 25; i++) {
+      for (var j = 1; j < 13; j++) {
+        mapLayer = map2019.getLayer(i + '_' + j)
+        nonExist = (typeof mapLayer == 'undefined')
+
+        if (i !== week) {
+          if (nonExist) {
+            continue;
+          }
+          if (i < week - 2 || i > week + 2) {
+            map2019.removeLayer(i + '_' + j);
+            map2019.removeSource(i + '_' + j);
+          }
+          else {
+            map2019.setLayoutProperty(i + '_' + j, 'visibility', 'none');
+          }
+        }
+        if (i == week) {
+          secondChunkLoader(currentSub, i);
           mapLayer = map2019.getLayer(i + '_' + j)
           nonExist = (typeof mapLayer == 'undefined')
-
-          if (i !== week) {
-            if (nonExist) {
-              continue;
-            }
-            if (i < week - 2 || i > week + 2) {
-              map2019.removeLayer(i + '_' + j);
-              map2019.removeSource(i + '_' + j);
-            }
-            else {
-              map2019.setLayoutProperty(i + '_' + j, 'visibility', 'none');
-            }
+          if (nonExist) {
+            continue;
           }
-          if (i == week) {
-            secondChunkLoader(currentSub, i);
-            mapLayer = map2019.getLayer(i + '_' + j)
-            nonExist = (typeof mapLayer == 'undefined')
-            if (nonExist) {
-              continue;
-            }
-            map2019.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
-          }
+          map2019.setLayoutProperty(i + '_' + j, 'visibility', 'visible');
         }
       }
-      map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
     }
+    map.setFilter('eventscovid', ['==', ['number', ['get', 'week']], week]);
+  }
   map
     .on('drag', function () {
       var currentSub = document.getElementById("substances").value;
